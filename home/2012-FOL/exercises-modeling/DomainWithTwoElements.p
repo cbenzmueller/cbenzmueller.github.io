@@ -1,0 +1,1 @@
+fof(ax1,axiom,( ![X]: ?[Y]: ( r(X,Y) & ~ r(Y,X) ) )).

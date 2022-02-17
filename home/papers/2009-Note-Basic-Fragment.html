@@ -1,0 +1,243 @@
+<HTML>
+<HEAD>
+<TITLE>A Note on LEO-II and the Basic Fragment of Simple Type Theory</TITLE>
+<BODY >
+
+<P>
+<H1 ALIGN=CENTER>A Note on LEO-II and the 
+<BR>
+Basic Fragment of Simple Type Theory</H1>
+<P ALIGN=CENTER><STRONG>Christoph  Benzm&#252;ller</STRONG>
+<BR><FONT SIZE=-1><FONT SIZE="-1">International University in Germany, Bruchsal, Germany and Articulate Software, CA, U.S.</FONT></FONT>
+</P>
+<HR>
+
+<H3>Abstract:</H3>
+
+LEO-II can now prove some challenge problems in the
+  basic fragment of simple type theory. 
+<P>
+
+<BR>
+
+
+<H2>Challenge Problems of Brown and Smolka in LEO-II</H2>
+
+Brown and Smolka [BS09b] present five very useful
+challenge problems in the basic fragment of simple type theory (the types
+of the constants are as follows: h:o&rarr;i , x:o, y:o, f:o&rarr;o, g:o&rarr;o, p:(o&rarr;o)&rarr;o,q:(o&rarr;o)&rarr;(o&rarr;o))
+<P>
+
+<P>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=2 BORDER="0">
+<TR><TD ALIGN="LEFT">(1)</TD>
+<TD ALIGN="LEFT">h(h false = h ~ false) =/= h false
+</TD>
+</TR>
+<TR><TD ALIGN="LEFT">(2)</TD>
+<TD ALIGN="LEFT">h(f(f(f x))) =/= h(f x) 
+</TD>
+</TR>
+<TR><TD ALIGN="LEFT">(3)</TD>
+<TD ALIGN="LEFT">x =/= y & g x = y & g y = x & f(f(f x)) = g(f x) 
+</TD>
+</TR>
+<TR><TD ALIGN="LEFT">(4)</TD>
+<TD ALIGN="LEFT">x =/= y & g x = y & g y = x & p g & ~ (p ~)  
+</TD>
+</TR>
+<TR><TD ALIGN="LEFT">(5)</TD>
+<TD ALIGN="LEFT">q f x & f(f x) & f (q f x) =/= f x
+</TD>
+</TR>
+</TABLE>
+</DIV>
+
+<P>
+The task is to show that these statements are unsatisfiable, i.e. imply falsehood. 
+
+<P>
+Another related example, that is not in the basic fragment of simple type
+theory, is the (negated) Kaminski equation:
+
+<P>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=2 BORDER="0">
+<TR><TD ALIGN="LEFT">(6)</TD>
+<TD ALIGN="LEFT">f(f(f x)) =/= f x
+</TD>
+</TR>
+</TABLE>
+</DIV>
+<p>
+The TPTP THF [BRS08] encodings of these problems are available under
+the following
+links: <A HREF="http://www.ags.uni-sb.de/~chris/papers/BrownSmolka-1.p">1</A>, <A HREF="http://www.ags.uni-sb.de/~chris/papers/BrownSmolka-2.p">2</A>, <A HREF="http://www.ags.uni-sb.de/~chris/papers/BrownSmolka-3.p">3</A>, <A HREF="http://www.ags.uni-sb.de/~chris/papers/BrownSmolka-4.p">4</A>, <A HREF="http://www.ags.uni-sb.de/~chris/papers/BrownSmolka-5.p">5</A>, <A HREF="http://www.ags.uni-sb.de/~chris/papers/Kaminski-equation.p">6</A>.
+
+<P>
+Brown and Smolka remark, that most of these formulas are out of reach
+for the automated tactics of Isabelle [NPW02] and the
+higher-order provers TPS [AB06] and LEO-II [BTPF08]. 
+
+<P>
+For the latest version of LEO-II (version 1.0) this comment is no
+longer valid. LEO-II (<TT><A 
+  HREF="http://leoprover.org">http://leoprover.org</A></TT>) is a
+resolution based higher-order ATP system designed to cooperate with
+specialist systems for fragments of higher-order logic and proof
+search in LEO-II is based on extensional higher-order (RUE-)resolution
+[Ben99a,Ben99b]. This calculus shares important similarities with the
+recent tableaux based calculi of Brown and Smolka for the basic
+fragment of simple type theory [BS09b] and for
+extended first order logic [BS09a]. 
+
+<P>
+The study of the above examples has led to the detection of some
+heuristic constraints in LEO-II's search procedure that were too
+restrictive.  Thus, no new rules were added to LEO-II's extensional
+higher-order (RUE-)resolution approach, but only some heuristically
+motivated restrictions on rule applications were skipped in the
+implementation.  Thereby we obtain the following results (all
+experiments were conducted on an iMac, Intel Core 2 Duo, 2.8 GHz, 2GB
+Memory):
+
+<P>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1">
+<TR><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="LEFT">Problem</TD>
+<TD ALIGN="LEFT">LEO-II + E</TD>
+</TR>
+<TR><TD ALIGN="LEFT">(1)</TD>
+<TD ALIGN="LEFT">h(h false = h ~ false) =/= h false
+</TD>
+<TD ALIGN="LEFT">0.075 sec</TD>
+</TR>
+<TR><TD ALIGN="LEFT">(2)</TD>
+<TD ALIGN="LEFT">h(f(f(f x))) =/= h(f x) 
+</TD>
+<TD ALIGN="LEFT">0.112 sec</TD>
+</TR>
+<TR><TD ALIGN="LEFT">(3)</TD>
+<TD ALIGN="LEFT">x =/= y & g x = y & g y = x & f(f(f x)) = g(f x) 
+</TD>
+<TD ALIGN="LEFT">-</TD>
+</TR>
+<TR><TD ALIGN="LEFT">(4)</TD>
+<TD ALIGN="LEFT">x =/= y & g x = y & g y = x & p g & ~ (p ~)  
+</TD>
+<TD ALIGN="LEFT">0.155 sec</TD>
+</TR>
+<TR><TD ALIGN="LEFT">(5)</TD>
+<TD ALIGN="LEFT">q f x & f(f x) & f (q f x) =/= f x
+</TD>
+<TD ALIGN="LEFT">0.130 sec</TD>
+</TR>
+<TR><TD ALIGN="LEFT">(6)</TD>
+<TD ALIGN="LEFT">(f(f(f x))) = (f x)
+</TD>
+<TD ALIGN="LEFT">0.192 sec</TD>
+</TR>
+</TABLE>
+</DIV>
+
+<P>
+This <TT><A 
+  HREF="http://www.ags.uni-sb.de/~chris/papers/BrownSmolka-1.out">link</A></TT> presents a proof object in TPTP TSTP format generated for Example (1)
+by LEO-II when called in standalone mode, i.e. when explicitly disabling
+the collaboration with prover E [Sch02]. In this case
+LEO-II proves Example (1) even in 0.018 sec.
+And this <TT><A 
+  HREF="http://www.ags.uni-sb.de/~chris/papers/BrownSmolka-2.out">link</A></TT> presents a proof object for Example (2) when calling LEO-II in
+standalone mode. In this case LEO-II proves Example (2) in
+1.296 sec.
+
+
+<H2>
+Conclusion
+</H2>
+The problems of Brown and Smolka are relevant and interesting test
+problems for higher-order automated theorem provers. Except for
+problem (3) they are now trivial for LEO-II. For (3) a relaxation
+of LEO-II's highly restricted factorisation rule seems required. First
+tests have shown that this will likely negatively influence LEO-II's
+performance for other examples and therefore we have not considered
+this an option so far. The relaxations of heuristics that were needed
+to obtain the results reported in this note do not negatively
+influence the overall performance of LEO-II for TPTP-v3.7.0. Future
+work includes further adaptations of LEO-II's proof search procedure to
+obtain a resolution based decision procedure for the basic fragment of
+simple type theory.
+
+<H3>
+Bibliography
+</H3>
+
+<DT>AB06</DT>
+<DD>
+P.B. Andrews and C.&nbsp;Brown. TPS: A Hybrid Automatic-Interactive System for Developing Proofs. Journal of Applied Logic, 4(4):367-395, 2006.
+</DD>
+
+<DT>Ben99a</DT>
+<DD>
+C. Benzm&#252;ller.
+Equality and Extensionality in Higher-Order Theorem Proving.
+PhD thesis, Naturwissenschaftlich-Technische Fakult&#228;t I, Saarland
+  University, Saarbr&#252;cken, Germany, 1999.
+</DD>
+
+<DT>Ben99b</DT>
+<DD>
+C. Benzm&#252;ller.
+Extensional higher-order paramodulation and RUE-resolution.
+CADE-16, volume 1632 in LNCS. Springer, 1999.
+</DD>
+
+<DT>BRS08</DT>
+<DD>
+C. Benzm&#252;ller, F. Rabe, and G. Sutcliffe, The Core TPTP Language for Classical Higher-Order Logic. 
+IJCAR'08, volume 5195 in LNAI,Springer, 2008.
+</DD>
+
+<DT>BTPF08</DT>
+<DD>
+Christoph Benzm&#252;ller, Frank Theiss, Larry Paulson, and Arnaud Fietzke.
+LEO-II - a cooperative automatic theorem prover for higher-order
+  logic. IJCAR'06, volume 5195 of LNAI, Springer, 2008.
+</DD>
+
+<DT>BS09a</DT>
+<DD>
+Chad&nbsp;E. Brown and Gert Smolka.
+Extended first-order logic.
+TPHOLs 2009,
+  volume 5674 of LNCS, Springer, 2009.
+</DD>
+
+
+<DT>BS09b</DT>
+<DD>
+Chad&nbsp;E. Brown and Gert Smolka.
+Terminating tableaux for the basic fragment of simple type theory.
+TABLEAUX 2009, volume
+  5607 of LNCS, Springer, 2009.
+</DD>
+
+<DT>NPW02</DT>
+<DD>
+T.&nbsp;Nipkow, L.&nbsp;Paulson, and M.&nbsp;Wenzel.
+Isabelle/HOL: A Proof Assistant for Higher-Order Logic.
+Volume 2283 in LNCS, Springer, 2002.
+</DD>
+
+<DT>SCH02</DT>
+<DD>
+S.&nbsp;Schulz.
+E: A Brainiac Theorem Prover.
+AI Communications, 15(2-3):111-126, 2002.
+</DD>
+
+</BODY>
+</HTML>
+

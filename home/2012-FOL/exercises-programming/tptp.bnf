@@ -1,0 +1,356 @@
+%----v3.2.0.0 (TPTP version.internal development number)
+%------------------------------------------------------------------------------
+%----README ... this header provides important meta- and usage information
+%----
+%----Intended uses of the various parts of the TPTP syntax are explained
+%----in the TPTP technical manual, linked from www.tptp.org.
+%----
+%----Four kinds of separators are used, to indicate different types of rules:
+%----  ::= is used for regular grammar rules, for syntactic parsing.
+%----  :== is used for semantic grammar rules. These define specific values
+%----      that make semantic sense when more general syntactic rules apply.
+%----  ::- is used for rules that produce tokens.
+%----  ::: is used for rules that define character classes used in the
+%----       construction of tokens.
+%----
+%----White space may occur between any two tokens. White space is not specified
+%----in the grammar, but the are some restrictions to ensure that the grammar 
+%----is campatible with standard Prolog: a <TPTP_file> should be readable with 
+%----read/1.
+%----
+%----The syntax of comments is defined by the <comment> rule. Comments may 
+%----occur between any two tokens, but do not act as white space. Comments 
+%----will normally be discarded at the lexical level, but may be processed 
+%----by systems that understand them e.g., if the system comment convention 
+%----is followed). 
+%------------------------------------------------------------------------------
+%----Files. Empty file is OK.
+<TPTP_file>          ::= <TPTP_input>*
+<TPTP_input>         ::= <annotated_formula> | <include>
+
+%----Formula records
+<annotated_formula>  ::= <fof_annotated> | <cnf_annotated>
+%----Future languages may include ...  english | efof | tfof | mathml | ...
+<fof_annotated>      ::= fof(<name>,<formula_role>,<fof_formula><annotations>).
+<cnf_annotated>      ::= cnf(<name>,<formula_role>,<cnf_formula><annotations>).
+<annotations>        ::= <null> | ,<source><optional_info>
+%----In derivations the annotated formulae names must be unique, so that
+%----parent references (see <inference_record>) are unambiguous. 
+
+%----Types for problems.
+%----Note: The previous <source_type> from ...
+%----   <formula_role> ::= <user_role>-<source> 
+%----... is now gone. Parsers may choose to be tolerant of it for backwards 
+%----compatibility.
+<formula_role>       ::= <lower_word>
+<formula_role>       :== axiom | hypothesis | definition | lemma | theorem |
+                         conjecture | lemma_conjecture | negated_conjecture |
+                         plain | fi_domain | fi_functors | fi_predicates |
+                         unknown
+%----"axiom"s are accepted, without proof, as a basis for proving "conjecture"s 
+%----and "lemma_conjecture"s in FOF problems. In CNF problems "axiom"s are 
+%----accepted as part of the set whose satisfiability has to be established.
+%----There is no guarantee that the axioms of a problem are consistent.
+%----"hypothesis"s are assumed to be true for a particular problem, and are 
+%----used like "axiom"s.
+%----"definition"s are used to define symbols, and are used like "axiom"s.
+%----"lemma"s and "theorem"s have been proven from the "axiom"s, can be used 
+%----like "axiom"s, but are redundant wrt the "axiom"s. "lemma" is used as the 
+%----role of proven "lemma_conjecture"s, and "theorem" is used as the role of 
+%----proven "conjecture"s, in output. A problem containing a "lemma" or 
+%----"theorem" that is not redundant wrt the "axiom"s is ill-formed. "theorem"s
+%----are more important than "lemma"s from the user perspective.
+%----"conjecture"s occur in only FOF problems, and are to all be proven from 
+%----the "axiom"(-like) formulae. A problem is solved only when all 
+%----"conjecture"s are proven.
+%----"lemma_conjecture"s are expected to be provable, and may be useful to 
+%----prove, while proving "conjecture"s.
+%----"negated_conjecture"s occur in only CNF problems, and are formed from
+%----negation of a "conjecture" in a FOF to CNF conversion.
+%----"plain"s have no special user semantics, and can be used like "axiom"s.
+%----"fi_domain", "fi_functors", and "fi_predicates" are used to record the
+%----domain, interpretation of functors, and interpretation of predicates, for
+%----a finite interpretation.
+%----"unknown"s have unknown role, and this is an error situation.
+
+%----FOF formulae. All formulae must be closed.
+<fof_formula>        ::= <binary_formula> | <unitary_formula>
+<binary_formula>     ::= <nonassoc_binary> | <assoc_binary>
+%----Only some binary connectives are associative
+%----There's no precedence among binary connectives
+<nonassoc_binary>    ::= <unitary_formula> <binary_connective> <unitary_formula>
+<binary_connective>  ::= <=> | => | <= | <~> | ~<vline> | ~&
+%----Associative connectives & and | are in <assoc_binary>
+<assoc_binary>       ::= <or_formula> | <and_formula>
+<or_formula>         ::= <unitary_formula> <vline> <unitary_formula>
+                         <more_or_formula>*
+<more_or_formula>    ::= <vline> <unitary_formula>
+<and_formula>        ::= <unitary_formula> & <unitary_formula>
+                         <more_and_formula>*
+<more_and_formula>   ::= & <unitary_formula>
+%----<unitary_formula> are in ()s or do not have a <binary_connective> at the 
+%----top level.
+<unitary_formula>    ::= <quantified_formula> | <unary_formula> |
+                         (<fof_formula>) | <atomic_formula>
+<quantified_formula> ::= <quantifier> [<variable_list>] : <unitary_formula>
+<quantifier>         ::= ! | ?
+%----! is universal quantification and ? is existential. Syntactically, the 
+%----quantification is the left operand of :, and the <unitary_formula> is 
+%----the right operand. Although : is a binary operator syntactically, it is 
+%----not a <binary_connective>, and thus a <quantified_formula> is a 
+%----<unitary_formula>.
+%----Universal   example: ! [X,Y] : ((p(X) & p(Y)) => q(X,Y)).
+%----Existential example: ? [X,Y] : (p(X) & p(Y)) & ~ q(X,Y).
+%----Quantifiers have higher precedence than binary connectives, so in
+%----the existential example the quantifier applies to only (p(X) & p(Y)).
+<variable_list>      ::= <variable> | <variable>,<variable_list>
+%----Future variables may have sorts and existential counting
+%----Unary connectives bind more tightly than binary
+<unary_formula>      ::= <unary_connective> <unitary_formula>
+<unary_connective>   ::= ~
+
+%----CNF formulae (variables implicitly universally quantified)
+<cnf_formula>        ::= (<disjunction>) | <disjunction>
+<disjunction>        ::= <literal> <more_disjunction>*
+<more_disjunction>   ::= <vline> <literal>
+<literal>            ::= <atomic_formula> | ~ <atomic_formula>
+
+%----Atoms (<predicate> is not used currently)
+<atomic_formula>     ::= <plain_atom> | <defined_atom> | <system_atom>
+<plain_atom>         ::= <plain_term>
+%----A <plain_atom> looks like a <plain_term>, but really we mean
+%----  <plain_atom>         ::= <proposition> | <predicate>(<arguments>)
+%----  <proposition>        ::= <atomic_word>
+%----  <predicate>          ::= <atomic_word>
+%----Using <plain_term> removes a reduce/reduce ambiguity in lex/yacc.
+<arguments>          ::= <term> | <term>,<arguments>
+<defined_atom>       ::= $true | $false |
+                         <term> <defined_infix_pred> <term>
+<defined_infix_pred> ::= = | !=
+%----A more general formulation, which syntactically admits more defined atoms,
+%----is as follows. Developers may prefer to adopt this.
+%----  <defined_atom>       ::= <defined_prop> | <defined_pred>(<arguments>) |
+%----                           <term> <defined_infix_pred> <term>
+%----  <defined_prop>       ::= <atomic_defined_word>
+%----  <defined_prop>       :== $true | $false
+%----  <defined_pred>       ::= <atomic_defined_word>
+%----  <defined_pred>       :==
+%----Some systems still interpret equal/2 as equality. The use of equal/2
+%----for other purposes is therefore discouraged. Please refrain from either 
+%----use. Use infix '=' for equality. Note: <term> != <term> is equivalent
+%----to ~ <term> = <term>
+%----More defined atoms may be added in the future.
+<system_atom>        ::= <system_term>
+%----<system_atom>s are used for evaluable predicates that are available
+%----in particular tools. The predicate names are not controlled by the
+%----TPTP syntax, so use with due care. The same is true for <system_term>s.
+
+%----Terms
+<term>               ::= <function_term> | <variable>
+<function_term>      ::= <plain_term> | <defined_term> | <system_term>
+<plain_term>         ::= <constant> | <functor>(<arguments>)
+<constant>           ::= <atomic_word>
+<functor>            ::= <atomic_word>
+<defined_term>       ::= <number> | <distinct_object>
+%----A more general formulation, which syntactically admits more defined terms,
+%----is as follows. Developers may prefer to adopt this.
+%----  <defined_term>       ::= <number> | <distinct_object> |
+%----                           <defined_constant> | 
+%----                           <defined_functor>(<arguments>) |
+%----                           <term> <defined_infix_func> <term>
+%----  <defined_constant>   ::= <atomic_defined_word>
+%----  <defined_constant>   :== 
+%----  <defined_functor>    ::= <atomic_defined_word>
+%----  <defined_functor>    :==
+%----  <defined_infix_func> ::= 
+%----System terms have system specific interpretations
+<system_term>        ::= <system_constant> | <system_functor>(<arguments>)
+<system_functor>     ::= <atomic_system_word>
+<system_constant>    ::= <atomic_system_word>
+<variable>           ::= <upper_word>
+
+%----Formula sources
+<source>             ::= <general_term>
+<source>             :== <dag_source> | <internal_source> | <external_source> |
+                         unknown
+%----Only a <dag_source> can be a <name>, i.e., derived formulae can be
+%----identified by a <name> or an <inference_record> 
+<dag_source>         :== <name> | <inference_record>
+<inference_record>   :== inference(<inference_rule>,<useful_info>,
+                             [<parent_list>])
+<inference_rule>     :== <atomic_word>
+%----Examples are        deduction | modus_tollens | modus_ponens | rewrite | 
+%                        resolution | paramodulation | factorization | 
+%                        cnf_conversion | cnf_refutation | ...
+<parent_list>        :== <parent_info> | <parent_info>,<parent_list>
+<parent_info>        :== <source><parent_details>
+<parent_details>     :== :<atomic_word> | <null>
+<internal_source>    :== introduced(<intro_type><optional_info>)
+<intro_type>         :== definition | axiom_of_choice | tautology
+%----This should be used to record the symbol being defined, or the function
+%----for the axiom of choice
+<external_source>    :== <file_source> | <theory> | <creator_source>
+<file_source>        :== file(<file_name><file_info>)
+<file_info>          :== ,<name> | <null>
+<theory>             :== theory(<theory_name><optional_info>)
+<theory_name>        :== equality | ac
+%----More theory names may be added in the future. The <optional_info> is
+%----used to store, e.g., which axioms of equality have been implicitly used,
+%----e.g., theory(equality,[rst]). Standard format still to be decided.
+<creator_source>     :== creator(<creator_name><optional_info>)
+<creator_name>       :== <atomic_word>
+
+%----Useful info fields
+<optional_info>      ::= ,<useful_info> | <null>
+<useful_info>        ::= <general_list>
+<useful_info>        :== [] | [<info_items>]
+<info_items>         :== <info_item> | <info_item>,<info_items>
+<info_item>          :== <formula_item> | <inference_item> | <general_term>
+%----Useful info for formula records
+<formula_item>       :== <description_item> | <iquote_item> 
+<description_item>   :== description(<atomic_word>)
+<iquote_item>        :== iquote(<atomic_word>)
+%----<iquote_item>s are used for recording exactly what the system output about
+%----the inference step. In the future it is planned to encode this information
+%----in standardized forms as <parent_details> in each <inference_record>.
+%----Useful info for inference records
+<inference_item>     :== <inference_status> | <refutation>
+<inference_status>   :== status(<status_value>) | <inference_info>
+%----These are the status values from the SZS ontology
+<status_value>       :== tau | tac | eqv | thm | sat | cax | noc | csa | cth |
+                         ceq | unc | uns | sab | sam | sar | sap | csp | csr |
+                         csm | csb
+%----The most commonly used status values are:
+%----  thm - Every model (and there are some) of the parent formulae is a 
+%----        model of the inferred formula. Regular logical consequences.
+%----  cth - Every model (and there are some) of the parent formulae is a 
+%----        model of the negation of the inferred formula. Used for negation
+%----        of conjectures in FOF to CNF conversion.
+%----  sab - There is a bijection between the models (and there are some) of
+%----        the parent formulae and models of the inferred formula. Used for
+%----        Skolemization steps.
+%----For the full hierarchy see the SZSOntology file distributed with the TPTP.
+<inference_info>     :== <inference_rule>(<atomic_word>,<general_list>)
+<refutation>         :== refutation(<file_source>)
+%----Useful info for creators is just <general_term>
+
+%----Include directives
+<include>            ::= include(<file_name><formula_selection>).
+<formula_selection>  ::= ,[<name_list>] | <null>
+<name_list>          ::= <name> | <name>,<name_list>
+
+%----Non-logical data
+<general_term>       ::= <general_data> | <general_data>:<general_term> |
+                         <general_list> 
+<general_data>       ::= <atomic_word> | <atomic_word>(<general_arguments>) |
+                         <number> | <distinct_object>
+<general_arguments>  ::= <general_term> | <general_term>,<general_arguments>
+<general_list>       ::= [] | [<general_term_list>]
+<general_term_list>  ::= <general_term> | <general_term>,<general_term_list>
+
+%----General purpose
+<name>               ::= <atomic_word> | <unsigned_integer>
+<atomic_word>        ::= <lower_word> | <single_quoted>
+%----This maybe useful in the future
+%----    <atomic_defined_word> ::= <dollar_word>
+<atomic_system_word> ::= <dollar_dollar_word>
+<number>             ::= <real> | <signed_integer> | <unsigned_integer>
+%----Numbers are always interpreted as themselves, and are thus implicitly 
+%----distinct if they have different values, e.g., 1 != 2 is an implicit axiom. 
+%----All numbers are base 10 at the moment.
+<file_name>          ::= <atomic_word>
+<null>               ::=
+
+%----#HYPERLINK \l "TOPOFPAGE"Top of Page---------------------------------------------------------------
+%----Rules from here on down are for defining tokens (terminal symbols) of the
+%----grammar, assuming they will be recognized by a lexical scanner. 
+%----A ::- rule defines a token, a ::: rule defines a macro that is not a 
+%----token. Usual regexp notation is used. Single characters are always placed
+%----in []s to disable any special meanings (for uniformity this is done to
+%----all characters, not only those with special meanings).
+
+%----These are tokens that appear in the syntax rules above. No rules
+%----defined here because they appear explicitly in the syntax rules.
+%----Keywords:    fof cnf include
+%----Punctuation: ( ) , . [ ] :
+%----Operators:   ! ? ~ & | <=> => <= <~> ~| ~& 
+%----Predicates:  = != $true $false
+
+<comment>            ::- <comment_line>|<comment_block>
+<comment_line>       ::: [%]<printable_char>*
+<comment_block>      ::: [/][*]<not_star_slash>[*][*]*[/]
+<not_star_slash>     ::: ([^*]*[*][*]*[^/*])*[^*]*
+%----System comments are a convention used for annotations that may used as 
+%----additional input to a specific system. They look like comments, but start 
+%----with %$$ or /*$$. A wily user of the syntax can notice the $$ and extract 
+%----information from the "comment" and pass that on as input to the system. 
+%----The specific system for which the information is intended should be 
+%----identified after the $$, e.g., /*$$Otter 3.3: Demodulator */
+%----To extract these separately from regular comments, the rules are:
+%----  <system_comment>     ::- <sys_comment_line>|<sys_comment_block>
+%----  <sys_comment_line>   ::: [%]<dollar_dollar><printable_char>*
+%----  <sys_comment_block>  ::: [/][*]<dollar_dollar><not_star_slash>[*][*]*[/]
+%----A string that matches both <system_comment> and <comment> should be
+%----recognized as <system_comment>, so put these before regular comments.
+
+<single_quoted>      ::- [']([^\\']|[\\][']|[\\][\\])*[']
+%----<single_quoted>      ::- '<printable_char>*', but ' and \ are escaped.
+%----\ is used as the escape character for ' and \, i.e., if \' is  encountered
+%----the ' is not the end of the <single_quoted>, and if \\ is encountered the 
+%----second \ is not an escape. Both characters (the escape \ and the following
+%----' or \) are retained and printed on output. Behaviour is undefined if the
+%----escape \ is followed by anything other than ' or \. Behaviour is undefined
+%----if a non-<printable_char> is encountered. If the contents of a <single
+%----quoted> constitute a <lower_word>, then the ''s should be stripped to
+%----produce a <lower_word>.
+<distinct_object>    ::- ["]([^\\"]|[\\]["]|[\\][\\])*["]
+%----<distinct_object>    ::- "<printable_char>*", but " and \ are escaped. The
+%----comments for <single_quoted> apply, with ' replaced by ".
+%----Distinct objects are always interpreted as themselves, and are thus 
+%----implicitly distinct if they look different, e.g., "Apple" != "Microsoft"
+%----is an implicit axiom. 
+
+%----This may be useful in the future 
+%----    <dollar_word>       ::- [$]<lower_word>
+<dollar_dollar_word> ::- <dollar_dollar><lower_word>
+<upper_word>         ::- <upper_alpha><alpha_numeric>*
+<lower_word>         ::- <lower_alpha><alpha_numeric>*
+
+%----Numbers
+<real>               ::- (<signed_decimal>|<unsigned_decimal>)<fraction_decimal>
+<signed_integer>     ::- <sign><unsigned_integer>
+<unsigned_integer>   ::- <unsigned_decimal>
+<signed_decimal>     ::: <sign><unsigned_decimal>
+<sign>               ::: [+-]
+<unsigned_decimal>   ::: ([0]|<non_zero_numeric><numeric>*)
+<fraction_decimal>   ::: [.]<numeric><numeric>*
+
+%----Character classes
+<numeric>            ::: [0-9]
+<non_zero_numeric>   ::: [1-9]
+<lower_alpha>        ::: [a-z]
+<upper_alpha>        ::: [A-Z]
+<alpha_numeric>      ::: (<lower_alpha>|<upper_alpha>|<numeric>|[_])
+<dollar_dollar>      ::: [$][$]
+<printable_char>     ::: .
+%----<printable_char>     ::: any printable ASCII character, codes 32-126
+%----<printable_char> thus includes spaces, but not tabs, newlines, bells, etc.
+%----This definition does not capture that.
+<vline>              ::: [|]
+
+%----#HYPERLINK \l "TOPOFPAGE"Top of Page---------------------------------------------------------------
+%----The following are the rules for old style TPTP formulae, which are
+%----no longer supported.
+% <TPTP_FOF_file>      ::= <TPTP_FOF_input>*
+% <TPTP_FOF_input>     ::= <TPTP_input_formula> | <include> | <comment>
+% <TPTP_input_formula> ::= input_formula(<name>,<formula_role>,<fof_formula>).
+% <TPTP_CNF_file>      ::= <TPTP_CNF_input>*
+% <TPTP_CNF_input>     ::= <TPTP_input_clause> | <include> | <comment>
+% <TPTP_input_clause>  ::= input_clause(<name>,<formula_role>,<TPTP_literals>).
+% 
+% %----Old style TPTP CNF
+% <TPTP_literals>      ::= [] | [<TPTP_literal><rest_of_TPTP_literals>*]
+% <rest_of_TPTP_literals> ::= ,<TPTP_literal>
+% <TPTP_literal>       ::= <TPTP_sign><atomic_formula>
+% <TPTP_sign>          ::= ++ | --
+%----#HYPERLINK \l "TOPOFPAGE"Top of Page---------------------------------------------------------------

@@ -1,0 +1,1194 @@
+% remarks and observations: 
+% - PRE is used already in axiom Dd25; its definition is given in Dd40
+% - clarification needed in Dd19 and Dd27
+% - in Dd38 mppc is used which is defined only much later
+% - found typo in Dd51; see last 'y'
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  THFO Encoding of DOLCE  %%%
+%%% by Christoph Benzmueller %%% 
+%%%    January, 14 2012      %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This encoding is based on document:                             %
+% http://wonderweb.semanticweb.org/deliverables/documents/D18.pdf %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Include the embedding of Quantified Multimodal Logic in HOL
+% cf.: http://www.ags.uni-sb.de/~chris/papers/QuantifiedMultimodalLogic.ax
+include('QuantifiedMultimodalLogic.ax').
+
+
+% Some further preliminaries
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% rel is an acessibility relation
+thf(rel_type,type,(
+    rel: $i > $i > $o )).
+
+% rel is an S5 structure: it is reflexive and euclidean
+thf(rel_S5,axiom,
+    ( ( mreflexive @ rel )
+    & ( meuclidean @ rel ) )).
+
+% mboxS5 is an S5 box operator
+thf(mboxS5_type,type,(
+    mboxS5: ( $i > $o ) > $i > $o )).
+
+% which uses rel as accessibility relation
+thf(mboxS5_def,definition,
+    ( mboxS5
+    = ( ^ [Phi: $i > $o] :
+          ( mbox @ rel @ Phi ) ) )).
+
+% we introduce a description operator at type mu (which is our the type for individuals)
+thf(descr_mu_type,type,(
+    descr_mu: ( mu > $o ) > mu )).
+
+thf(descr_mu_axiom,axiom,(
+    ! [P: mu > $o] :
+      ( ? [X: mu] :
+          ( ( P @ X )
+          & ! [Y: mu] :
+              ( ( P @ Y )
+             => ( X = Y ) ) )
+     => ( P @ ( descr_mu @ P ) ) ) )).
+
+%%%%%%%%%%%%%%%%%%%%
+% DOLCE Universals %
+%%%%%%%%%%%%%%%%%%%%
+
+% Basic functions 
+%%%%%%%%%%%%%%%%%%
+
+% Parthood
+thf(d_P_type,type,(
+    d_P: mu > mu > $i > $o )).
+
+% TemporaryParthood
+thf(d_TP_type,type,(
+    d_TP: mu > mu > mu > $i > $o )).
+
+% Constitution
+thf(d_K_type,type,(
+    d_K: mu > mu > mu > $i > $o )).
+
+% Participation
+thf(d_PC_type,type,(
+    d_PC: mu > mu > mu > $i > $o )).
+
+% Quality
+thf(d_qt_type,type,(
+    d_qt: mu > mu > $i > $o )).
+
+% Quale
+thf(d_ql_type,type,(
+    d_ql: mu > mu > $i > $o )).
+
+% Temporary Quale
+thf(d_ql3_type,type,(
+    d_ql3: mu > mu > mu > $i > $o )).
+
+% The excplicit universals of DOLCE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% PT
+thf(d_PT_type,type,(
+    d_PT: mu > $i > $o )).
+
+% AB
+thf(d_AB_type,type,(
+    d_AB: mu > $i > $o )).
+
+% R
+thf(d_R_type,type,(
+    d_R: mu > $i > $o )).
+
+% FACT
+thf(d_FACT_type,type,(
+    d_FACT: mu > $i > $o )).
+
+% SET
+thf(d_SET_type,type,(
+    d_SET: mu > $i > $o )).
+
+% TR
+thf(d_TR_type,type,(
+    d_TR: mu > $i > $o )).
+
+% T
+thf(d_T_type,type,(
+    d_T: mu > $i > $o )).
+
+% PR
+thf(d_PR_type,type,(
+    d_PR: mu > $i > $o )).
+
+% S
+thf(d_S_type,type,(
+    d_S: mu > $i > $o )).
+
+% AR
+thf(d_AR_type,type,(
+    d_AR: mu > $i > $o )).
+
+% Q
+thf(d_Q_type,type,(
+    d_Q: mu > $i > $o )).
+
+% TQ
+thf(d_TQ_type,type,(
+    d_TQ: mu > $i > $o )).
+
+% TL
+thf(d_TL_type,type,(
+    d_TL: mu > $i > $o )).
+
+% PQ
+thf(d_PQ_type,type,(
+    d_PQ: mu > $i > $o )).
+
+% SL
+thf(d_SL_type,type,(
+    d_SL: mu > $i > $o )).
+
+% AQ
+thf(d_AQ_type,type,(
+    d_AQ: mu > $i > $o )).
+
+% ED
+thf(d_ED_type,type,(
+    d_ED: mu > $i > $o )).
+
+% PED
+thf(d_PED_type,type,(
+    d_PED: mu > $i > $o )).
+
+% M
+thf(d_M_type,type,(
+    d_M: mu > $i > $o )).
+
+% F
+thf(d_F_type,type,(
+    d_F: mu > $i > $o )).
+
+% POB
+thf(d_POB_type,type,(
+    d_POB: mu > $i > $o )).
+
+% APO
+thf(d_APO_type,type,(
+    d_APO: mu > $i > $o )).
+
+% NAPO
+thf(d_NAPO_type,type,(
+    d_NAPO: mu > $i > $o )).
+
+% NPED
+thf(d_NPED_type,type,(
+    d_NPED: mu > $i > $o )).
+
+% NPOB
+thf(d_NPOB_type,type,(
+    d_NPOB: mu > $i > $o )).
+
+% MOB
+thf(d_MOB_type,type,(
+    d_MOB: mu > $i > $o )).
+
+% SOB
+thf(d_SOB_type,type,(
+    d_SOB: mu > $i > $o )).
+
+% ASO
+thf(d_ASO_type,type,(
+    d_ASO: mu > $i > $o )).
+
+% SAG
+thf(d_SAG_type,type,(
+    d_SAG: mu > $i > $o )).
+
+% SC
+thf(d_SC_type,type,(
+    d_SC: mu > $i > $o )).
+
+% NASO
+thf(d_NASO_type,type,(
+    d_NASO: mu > $i > $o )).
+
+% AS
+thf(d_AS_type,type,(
+    d_AS: mu > $i > $o )).
+
+% PD
+thf(d_PD_type,type,(
+    d_PD: mu > $i > $o )).
+
+% EV
+thf(d_EV_type,type,(
+    d_EV: mu > $i > $o )).
+
+% ACH
+thf(d_ACH_type,type,(
+    d_ACH: mu > $i > $o )).
+
+% ACC
+thf(d_ACC_type,type,(
+    d_ACC: mu > $i > $o )).
+
+% STV
+thf(d_STV_type,type,(
+    d_STV: mu > $i > $o )).
+
+% ST
+thf(d_ST_type,type,(
+    d_ST: mu > $i > $o )).
+
+% PRO
+thf(d_PRO_type,type,(
+    d_PRO: mu > $i > $o )).
+
+% The set PIx.
+thf(d_PIx_type,type,(
+    d_PIx: ( mu > $i > $o ) > $i > $o )).
+
+thf(d_PIx_def,definition,
+    ( d_PIx
+    = ( ^ [S: mu > $i > $o,W: $i] :
+          ( ( S = d_PT )
+          | ( S = d_AB )
+          | ( S = d_R )
+          | ( S = d_TR )
+          | ( S = d_T )
+          | ( S = d_PR )
+          | ( S = d_S )
+          | ( S = d_AR )
+          | ( S = d_Q )
+          | ( S = d_TQ )
+          | ( S = d_TL )
+          | ( S = d_AQ )
+          | ( S = d_ED )
+          | ( S = d_PED )
+          | ( S = d_M )
+          | ( S = d_F )
+          | ( S = d_POB )
+          | ( S = d_APO )
+          | ( S = d_NAPO )
+          | ( S = d_NPED )
+          | ( S = d_NPOB )
+          | ( S = d_MOB )
+          | ( S = d_SOB )
+          | ( S = d_ASO )
+          | ( S = d_SAG )
+          | ( S = d_SC )
+          | ( S = d_NASO )
+          | ( S = d_AS )
+          | ( S = d_PD )
+          | ( S = d_EV )
+          | ( S = d_ACH )
+          | ( S = d_ACC )
+          | ( S = d_STV )
+          | ( S = d_ST )
+          | ( S = d_PRO ) ) ) )).
+
+% Auxiliary predicate for: The elements of set PIx fulfil property P
+thf(forall_P_in_PIx_holds_type,type,(
+    forall_P_in_PIx_holds: ( ( mu > $i > $o ) > $i > $o ) > $o )).
+
+thf(forall_P_in_PIx_holds_def,definition,
+    ( forall_P_in_PIx_holds
+    = ( ^ [P: ( mu > $i > $o ) > $i > $o] :
+          ( ( mvalid @ ( P @ d_PT ) )
+          & ( mvalid @ ( P @ d_AB ) )
+          & ( mvalid @ ( P @ d_R ) )
+          & ( mvalid @ ( P @ d_TR ) )
+          & ( mvalid @ ( P @ d_T ) )
+          & ( mvalid @ ( P @ d_PR ) )
+          & ( mvalid @ ( P @ d_S ) )
+          & ( mvalid @ ( P @ d_AR ) )
+          & ( mvalid @ ( P @ d_Q ) )
+          & ( mvalid @ ( P @ d_TQ ) )
+          & ( mvalid @ ( P @ d_TL ) )
+          & ( mvalid @ ( P @ d_AQ ) )
+          & ( mvalid @ ( P @ d_ED ) )
+          & ( mvalid @ ( P @ d_PED ) )
+          & ( mvalid @ ( P @ d_M ) )
+          & ( mvalid @ ( P @ d_F ) )
+          & ( mvalid @ ( P @ d_POB ) )
+          & ( mvalid @ ( P @ d_APO ) )
+          & ( mvalid @ ( P @ d_NAPO ) )
+          & ( mvalid @ ( P @ d_NPED ) )
+          & ( mvalid @ ( P @ d_NPOB ) )
+          & ( mvalid @ ( P @ d_MOB ) )
+          & ( mvalid @ ( P @ d_SOB ) )
+          & ( mvalid @ ( P @ d_ASO ) )
+          & ( mvalid @ ( P @ d_SAG ) )
+          & ( mvalid @ ( P @ d_SC ) )
+          & ( mvalid @ ( P @ d_NASO ) )
+          & ( mvalid @ ( P @ d_AS ) )
+          & ( mvalid @ ( P @ d_PD ) )
+          & ( mvalid @ ( P @ d_EV ) )
+          & ( mvalid @ ( P @ d_ACH ) )
+          & ( mvalid @ ( P @ d_ACC ) )
+          & ( mvalid @ ( P @ d_STV ) )
+          & ( mvalid @ ( P @ d_ST ) )
+          & ( mvalid @ ( P @ d_PRO ) ) ) ) )).
+
+% Basic axioms on argument restrictions of primitives
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Parthood
+thf(ax_basic_Parthood,axiom,
+    ( mvalid
+    @ ( mforall_ind
+      @ ^ [X: mu] :
+          ( mforall_ind
+          @ ^ [Y: mu] :
+              ( mimplies @ ( d_P @ X @ Y ) @ ( mand @ ( mor @ ( d_AB @ X ) @ ( d_PD @ X ) ) @ ( mor @ ( d_AB @ Y ) @ ( d_PD @ Y ) ) ) ) ) ) )).
+
+% TemporaryParthood
+thf(ax_basic_TemporaryParthood,axiom,
+    ( mvalid
+    @ ( mforall_ind
+      @ ^ [X: mu] :
+          ( mforall_ind
+          @ ^ [Y: mu] :
+              ( mforall_ind
+              @ ^ [T: mu] :
+                  ( mimplies @ ( d_TP @ X @ Y @ T ) @ ( mand @ ( d_ED @ X ) @ ( mand @ ( d_ED @ X ) @ ( d_T @ T ) ) ) ) ) ) ) )).
+
+% Constitution
+thf(ax_basic_Constitution,axiom,
+    ( mvalid
+    @ ( mforall_ind
+      @ ^ [X: mu] :
+          ( mforall_ind
+          @ ^ [Y: mu] :
+              ( mforall_ind
+              @ ^ [T: mu] :
+                  ( mimplies @ ( d_K @ X @ Y @ T ) @ ( mand @ ( mor @ ( d_ED @ X ) @ ( d_PD @ X ) ) @ ( mand @ ( mor @ ( d_ED @ Y ) @ ( d_PD @ Y ) ) @ ( d_T @ T ) ) ) ) ) ) ) )).
+
+% Participation
+thf(ax_basic_Participation,axiom,
+    ( mvalid
+    @ ( mforall_ind
+      @ ^ [X: mu] :
+          ( mforall_ind
+          @ ^ [Y: mu] :
+              ( mforall_ind
+              @ ^ [T: mu] :
+                  ( mimplies @ ( d_PC @ X @ Y @ T ) @ ( mand @ ( d_ED @ X ) @ ( mand @ ( d_PD @ X ) @ ( d_T @ T ) ) ) ) ) ) ) )).
+
+% Parthood
+thf(ax_basic_Quality,axiom,
+    ( mvalid
+    @ ( mforall_ind
+      @ ^ [X: mu] :
+          ( mforall_ind
+          @ ^ [Y: mu] :
+              ( mimplies @ ( d_qt @ X @ Y ) @ ( mand @ ( d_Q @ X ) @ ( mor @ ( d_Q @ Y ) @ ( mor @ ( d_ED @ Y ) @ ( d_PD @ Y ) ) ) ) ) ) ) )).
+
+% Quale
+thf(ax_basic_Quale,axiom,
+    ( mvalid
+    @ ( mforall_ind
+      @ ^ [X: mu] :
+          ( mforall_ind
+          @ ^ [Y: mu] :
+              ( mimplies @ ( d_ql @ X @ Y ) @ ( mand @ ( d_TR @ X ) @ ( d_TQ @ Y ) ) ) ) ) )).
+
+% Temporary Quale
+thf(ax_basic_TemporaryQuale,axiom,
+    ( mvalid
+    @ ( mforall_ind
+      @ ^ [X: mu] :
+          ( mforall_ind
+          @ ^ [Y: mu] :
+              ( mforall_ind
+              @ ^ [T: mu] :
+                  ( mimplies @ ( d_ql3 @ X @ Y @ T ) @ ( mand @ ( mor @ ( d_TR @ X ) @ ( d_AR @ X ) ) @ ( mand @ ( mor @ ( d_PQ @ Y ) @ ( d_AQ @ Y ) ) @ ( d_T @ T ) ) ) ) ) ) ) )).
+
+% Some useful notions regarding universals
+
+% Dd1: Phi is rigid
+thf(d_RG_tp,type,(
+    d_RG: ( mu > $i > $o ) > $i > $o )).
+
+thf(d_RG_def,definition,
+    ( d_RG
+    = ( ^ [Phi: mu > $i > $o] :
+          ( mboxS5
+          @ ( mforall_ind
+            @ ^ [X: mu] :
+                ( mimplies @ ( Phi @ X ) @ ( mboxS5 @ ( Phi @ X ) ) ) ) ) ) )).
+
+% Dd2: Phi is non-empty
+thf(d_NEP_type,type,(
+    d_NEP: ( mu > $i > $o ) > $i > $o )).
+
+thf(d_NEP_def,definition,
+    ( d_NEP
+    = ( ^ [Phi: mu > $i > $o] :
+          ( mboxS5
+          @ ( mexists_ind
+            @ ^ [X: mu] :
+                ( Phi @ X ) ) ) ) )).
+
+% Dd3: Phi and Psi are disjoint
+thf(d_DJ_type,type,(
+    d_DJ: ( mu > $i > $o ) > ( mu > $i > $o ) > $i > $o )).
+
+thf(d_DJ_def,definition,
+    ( d_DJ
+    = ( ^ [Phi: mu > $i > $o,Psi: mu > $i > $o] :
+          ( mboxS5
+          @ ( mnot
+            @ ( mexists_ind
+              @ ^ [X: mu] :
+                  ( mand @ ( Phi @ X ) @ ( Psi @ X ) ) ) ) ) ) )).
+
+% Dd4: Phi subsumes Psi
+thf(d_SB_type,type,(
+    d_SB: ( mu > $i > $o ) > ( mu > $i > $o ) > $i > $o )).
+
+thf(d_SB_def,definition,
+    ( d_SB
+    = ( ^ [Phi: mu > $i > $o,Psi: mu > $i > $o] :
+          ( mboxS5
+          @ ( mforall_ind
+            @ ^ [X: mu] :
+                ( mimplies @ ( Psi @ X ) @ ( Phi @ X ) ) ) ) ) )).
+
+% Dd5: Phi equals Psi
+thf(d_EQ_type,type,(
+    d_EQ: ( mu > $i > $o ) > ( mu > $i > $o ) > $i > $o )).
+
+thf(d_EQ_def,definition,
+    ( d_EQ
+    = ( ^ [Phi: mu > $i > $o,Psi: mu > $i > $o] :
+          ( mand @ ( d_SB @ Phi @ Psi ) @ ( d_SB @ Psi @ Phi ) ) ) )).
+
+% Dd6: Phi properly subsumes Psi
+thf(d_PSB_type,type,(
+    d_PSB: ( mu > $i > $o ) > ( mu > $i > $o ) > $i > $o )).
+
+thf(d_PSB_def,definition,
+    ( d_PSB
+    = ( ^ [Phi: mu > $i > $o,Psi: mu > $i > $o] :
+          ( mand @ ( d_SB @ Phi @ Psi ) @ ( mnot @ ( d_SB @ Psi @ Phi ) ) ) ) )).
+
+% Dd7: Phi is a leaf (note: we here employ modal quantification over predicates like Phi;
+% for this we have appropriately extended the embedding of quantified modal logics in HOL; this 
+% has quite some higher-order flavor)
+thf(d_L_type,type,(
+    d_L: ( mu > $i > $o ) > $i > $o )).
+
+thf(d_L_def,definition,
+    ( d_L
+    = ( ^ [Phi: mu > $i > $o] :
+          ( mboxS5
+          @ ( mforall_pred
+            @ ^ [Psi: mu > $i > $o] :
+                ( mimplies @ ( d_SB @ Phi @ Psi ) @ ( d_EQ @ Phi @ Psi ) ) ) ) ) )).
+
+% Dd8: Psi is a leaf subsumed by Phi
+thf(d_SBL_type,type,(
+    d_SBL: ( mu > $i > $o ) > ( mu > $i > $o ) > $i > $o )).
+
+thf(d_SBL_def,definition,
+    ( d_SBL
+    = ( ^ [Phi: mu > $i > $o,Psi: mu > $i > $o] :
+          ( mand @ ( d_SB @ Phi @ Psi ) @ ( d_L @ Psi ) ) ) )).
+
+% Dd9: Psi is a leaf properly subsumed by Phi
+thf(d_PSBL_type,type,(
+    d_PSBL: ( mu > $i > $o ) > ( mu > $i > $o ) > $i > $o )).
+
+thf(d_PSBL_def,definition,
+    ( d_PSBL
+    = ( ^ [Phi: mu > $i > $o,Psi: mu > $i > $o] :
+          ( mand @ ( d_PSB @ Phi @ Psi ) @ ( d_L @ Psi ) ) ) )).
+
+% Dd10: Phi is a leaf in PIx
+thf(d_Lx_type,type,(
+    d_Lx: ( ( mu > $i > $o ) > $i > $o ) > ( mu > $i > $o ) > $i > $o )).
+
+thf(d_Lx_def,definition,
+    ( d_Lx
+    = ( ^ [X: ( mu > $i > $o ) > $i > $o,Phi: mu > $i > $o] :
+          ( mand @ ( X @ Phi )
+          @ ( mboxS5
+            @ ( mforall_pred
+              @ ^ [Psi: mu > $i > $o] :
+                  ( mimplies @ ( mand @ ( d_SB @ Phi @ Psi ) @ ( X @ Psi ) ) @ ( d_EQ @ Phi @ Psi ) ) ) ) ) ) )).
+
+% Dd11: 
+thf(d_SBLx_type,type,(
+    d_SBLx: ( ( mu > $i > $o ) > $i > $o ) > ( mu > $i > $o ) > ( mu > $i > $o ) > $i > $o )).
+
+thf(d_SBLx_def,definition,
+    ( d_SBLx
+    = ( ^ [X: ( mu > $i > $o ) > $i > $o,Phi: mu > $i > $o,Psi: mu > $i > $o] :
+          ( mand @ ( d_SB @ Phi @ Psi ) @ ( d_Lx @ X @ Psi ) ) ) )).
+
+% Dd12: 
+thf(d_PSBLx_type,type,(
+    d_PSBLx: ( ( mu > $i > $o ) > $i > $o ) > ( mu > $i > $o ) > ( mu > $i > $o ) > $i > $o )).
+
+thf(d_PSBLx_def,definition,
+    ( d_PSBLx
+    = ( ^ [X: ( mu > $i > $o ) > $i > $o,Phi: mu > $i > $o,Psi: mu > $i > $o] :
+          ( mand @ ( d_PSB @ Phi @ Psi ) @ ( d_Lx @ X @ Psi ) ) ) )).
+
+% Dd13: Phi_1 ... Phi_n is an n-trivial partition of Psi
+% (we do the cases here for n=2 and n=3; other cases are analog)
+
+% Dd13 case of n=2
+thf(d_PT2_type,type,(
+    d_PT2: ( mu > $i > $o ) > ( mu > $i > $o ) > ( mu > $i > $o ) > $i > $o )).
+
+thf(d_PT2_def,definition,
+    ( d_PT2
+    = ( ^ [Psi: mu > $i > $o,Phi1: mu > $i > $o,Phi2: mu > $i > $o] :
+          ( mand
+          @ ^ [W: $i] : ( Psi != Phi1 )
+          @ ( mand @ ( d_DJ @ Phi1 @ Phi2 )
+            @ ( mforall_ind
+              @ ^ [X: mu] :
+                  ( mequiv @ ( Psi @ X ) @ ( mor @ ( Phi1 @ X ) @ ( Phi2 @ X ) ) ) ) ) ) ) )).
+
+% Dd13 case of n=3
+thf(d_PT3_type,type,(
+    d_PT3: ( mu > $i > $o ) > ( mu > $i > $o ) > ( mu > $i > $o ) > ( mu > $i > $o ) > $i > $o )).
+
+thf(d_PT3_def,definition,
+    ( d_PT3
+    = ( ^ [Psi: mu > $i > $o,Phi1: mu > $i > $o,Phi2: mu > $i > $o,Phi3: mu > $i > $o] :
+          ( mand
+          @ ^ [W: $i] : ( Psi != Phi1 )
+          @ ( mand @ ( mand @ ( d_DJ @ Phi1 @ Phi2 ) @ ( mand @ ( d_DJ @ Phi1 @ Phi3 ) @ ( d_DJ @ Phi2 @ Phi3 ) ) )
+            @ ( mforall_ind
+              @ ^ [X: mu] :
+                  ( mequiv @ ( Psi @ X ) @ ( mor @ ( Phi1 @ X ) @ ( mor @ ( Phi2 @ X ) @ ( Phi3 @ X ) ) ) ) ) ) ) ) )).
+
+% Dd13 case of n=4
+thf(d_PT4_type,type,(
+    d_PT4: ( mu > $i > $o ) > ( mu > $i > $o ) > ( mu > $i > $o ) > ( mu > $i > $o ) > ( mu > $i > $o ) > $i > $o )).
+
+thf(d_PT4_def,definition,
+    ( d_PT4
+    = ( ^ [Psi: mu > $i > $o,Phi1: mu > $i > $o,Phi2: mu > $i > $o,Phi3: mu > $i > $o,Phi4: mu > $i > $o] :
+          ( mand
+          @ ^ [W: $i] : ( Psi != Phi1 )
+          @ ( mand @ ( mand @ ( d_DJ @ Phi1 @ Phi2 ) @ ( mand @ ( d_DJ @ Phi1 @ Phi3 ) @ ( mand @ ( d_DJ @ Phi1 @ Phi4 ) @ ( mand @ ( d_DJ @ Phi2 @ Phi3 ) @ ( mand @ ( d_DJ @ Phi2 @ Phi4 ) @ ( d_DJ @ Phi3 @ Phi4 ) ) ) ) ) )
+            @ ( mforall_ind
+              @ ^ [X: mu] :
+                  ( mequiv @ ( Psi @ X ) @ ( mor @ ( Phi1 @ X ) @ ( mor @ ( Phi2 @ X ) @ ( mor @ ( Phi3 @ X ) @ ( Phi4 @ X ) ) ) ) ) ) ) ) ) )).
+
+% Only non-empty universals are considered. (note: right now we only consider 
+% the universals in PIx)
+
+thf(ax_nonEmptyUniversals,axiom,
+    ( forall_P_in_PIx_holds @ d_NEP )).
+
+% All unversals in PIx are rigid. 
+
+thf(ax_nonEmptyUniversals_001,axiom,
+    ( forall_P_in_PIx_holds @ d_RG )).
+
+% all the "taxonomic" constraints in Figure 2 have to be considered as PT ...
+% ... (except for the the universals for which the categories they subsume are 
+% not completely specified in the Figure for which we have only a subsumption
+% constraint)
+
+thf(ax_PT,axiom,
+    ( ( mvalid @ ( d_PT4 @ d_PT @ d_ED @ d_PD @ d_Q @ d_AR ) )
+    & ( mvalid @ ( d_PT3 @ d_ED @ d_PED @ d_NPED @ d_AS ) )
+    & ( mvalid @ ( d_PT2 @ d_PD @ d_EV @ d_STV ) )
+    & ( mvalid @ ( d_PT3 @ d_Q @ d_TQ @ d_PQ @ d_AQ ) )
+    & ( mvalid @ ( d_PT3 @ d_PED @ d_M @ d_F @ d_POB ) )
+    & ( mvalid @ ( d_PT2 @ d_EV @ d_ACH @ d_ACC ) )
+    & ( mvalid @ ( d_PT2 @ d_STV @ d_ST @ d_PRO ) )
+    & ( mvalid @ ( d_PT3 @ d_R @ d_TR @ d_PR @ d_AR ) )
+    & ( mvalid @ ( d_PT2 @ d_POB @ d_APO @ d_NAPO ) )
+    & ( mvalid @ ( d_PT2 @ d_NPOB @ d_MOB @ d_SOB ) )
+    & ( mvalid @ ( d_PT2 @ d_SOB @ d_ASO @ d_NASO ) )
+    & ( mvalid @ ( d_PT2 @ d_ASO @ d_SAG @ d_SC ) ) )).
+
+thf(ax_SB,axiom,
+    ( ( mvalid @ ( d_SB @ d_PT @ d_ED ) )
+    & ( mvalid @ ( d_SB @ d_PT @ d_PD ) )
+    & ( mvalid @ ( d_SB @ d_PT @ d_Q ) )
+    & ( mvalid @ ( d_SB @ d_PT @ d_AB ) )
+    & ( mvalid @ ( d_SB @ d_ED @ d_PED ) )
+    & ( mvalid @ ( d_SB @ d_ED @ d_NPED ) )
+    & ( mvalid @ ( d_SB @ d_ED @ d_AS ) )
+    & ( mvalid @ ( d_SB @ d_PED @ d_M ) )
+    & ( mvalid @ ( d_SB @ d_PED @ d_F ) )
+    & ( mvalid @ ( d_SB @ d_PED @ d_POB ) )
+    & ( mvalid @ ( d_SB @ d_POB @ d_APO ) )
+    & ( mvalid @ ( d_SB @ d_POB @ d_NAPO ) )
+    & ( mvalid @ ( d_SB @ d_NPED @ d_NPOB ) )
+    & ( mvalid @ ( d_SB @ d_NPOB @ d_MOB ) )
+    & ( mvalid @ ( d_SB @ d_NPOB @ d_SOB ) )
+    & ( mvalid @ ( d_SB @ d_SOB @ d_ASO ) )
+    & ( mvalid @ ( d_SB @ d_SOB @ d_NASO ) )
+    & ( mvalid @ ( d_SB @ d_ASO @ d_SAG ) )
+    & ( mvalid @ ( d_SB @ d_ASO @ d_SC ) )
+    & ( mvalid @ ( d_SB @ d_PD @ d_EV ) )
+    & ( mvalid @ ( d_SB @ d_PD @ d_STV ) )
+    & ( mvalid @ ( d_SB @ d_EV @ d_ACH ) )
+    & ( mvalid @ ( d_SB @ d_EV @ d_ACC ) )
+    & ( mvalid @ ( d_SB @ d_STV @ d_ST ) )
+    & ( mvalid @ ( d_SB @ d_STV @ d_PRO ) )
+    & ( mvalid @ ( d_SB @ d_Q @ d_TQ ) )
+    & ( mvalid @ ( d_SB @ d_Q @ d_PQ ) )
+    & ( mvalid @ ( d_SB @ d_Q @ d_AQ ) )
+    & ( mvalid @ ( d_SB @ d_TQ @ d_TL ) )
+    & ( mvalid @ ( d_SB @ d_PQ @ d_SL ) )
+    & ( mvalid @ ( d_SB @ d_AB @ d_FACT ) )
+    & ( mvalid @ ( d_SB @ d_AB @ d_SET ) )
+    & ( mvalid @ ( d_SB @ d_AB @ d_R ) )
+    & ( mvalid @ ( d_SB @ d_R @ d_TR ) )
+    & ( mvalid @ ( d_SB @ d_R @ d_PR ) )
+    & ( mvalid @ ( d_SB @ d_R @ d_AR ) )
+    & ( mvalid @ ( d_SB @ d_TR @ d_T ) )
+    & ( mvalid @ ( d_SB @ d_PR @ d_S ) ) )).
+
+% Mereological Definitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Dd14 Proper Part
+thf(d_PP_type,type,(
+    d_PP: mu > mu > $i > $o )).
+
+thf(d_PP_def,definition,
+    ( d_PP
+    = ( ^ [X: mu,Y: mu] :
+          ( mand @ ( d_P @ X @ Y ) @ ( mnot @ ( d_P @ Y @ X ) ) ) ) )).
+
+% Dd15 Overlap
+thf(d_O_type,type,(
+    d_O: mu > mu > $i > $o )).
+
+thf(d_O_def,definition,
+    ( d_O
+    = ( ^ [X: mu,Y: mu] :
+          ( mexists_ind
+          @ ^ [Z: mu] :
+              ( mand @ ( d_P @ Z @ X ) @ ( d_P @ Z @ Y ) ) ) ) )).
+
+% Dd16 Atom
+thf(d_At_type,type,(
+    d_At: mu > $i > $o )).
+
+thf(d_At_def,definition,
+    ( d_At
+    = ( ^ [X: mu] :
+          ( mnot
+          @ ( mexists_ind
+            @ ^ [Y: mu] :
+                ( d_PP @ Y @ X ) ) ) ) )).
+
+% Dd17 Atomic Part
+thf(d_AtP_type,type,(
+    d_AtP: mu > mu > $i > $o )).
+
+thf(d_AtP_def,definition,
+    ( d_AtP
+    = ( ^ [X: mu,Y: mu] :
+          ( mand @ ( d_P @ X @ Y ) @ ( d_At @ X ) ) ) )).
+
+% Dd18 Binary Sum 
+thf(d_Plus_type,type,(
+    d_Plus: mu > mu > $i > $o )).
+
+thf(d_Plus_def,definition,
+    ( d_Plus
+    = ( ^ [X: mu,Y: mu,World: $i] :
+          ( descr_mu
+          @ ^ [Z: mu] :
+              ( mforall_ind
+              @ ^ [W: mu] :
+                  ( mimplies @ ( d_O @ W @ Z ) @ ( mor @ ( d_O @ W @ X ) @ ( d_O @ W @ Y ) ) )
+              @ World ) ) ) )).
+
+% Dd19 Sum of Phi's (this axiom seems quite higher-orderish)
+thf(d_alphaXPhi_type,type,(
+    d_alphaXPhi: mu > $i > $o )).
+
+% Actually, the definition of this operator in the DOLCE document is unclear;
+% in particular the argument X is not used in the body of the definition while 
+% Phi is used in the definition but not listed as an argument. This is odd.
+% In summary this axioms seems not well defined yet. Footnote 28 does not help 
+% much either.
+% Todo: contact DOLCE authors and ask for clarification.
+
+% Dd20 Temporary Proper Part
+thf(d_TPP_type,type,(
+    d_TPP: mu > mu > $i > $o )).
+
+thf(d_TPP_def,definition,
+    ( d_TPP
+    = ( ^ [X: mu,Y: mu,T: mu] :
+          ( mand @ ( d_TP @ X @ Y @ T ) @ ( mnot @ ( d_TP @ Y @ X @ T ) ) ) ) )).
+
+% Dd21 Temporary Overlap
+thf(d_TO_type,type,(
+    d_TO: mu > mu > $i > $o )).
+
+thf(d_TO_def,definition,
+    ( d_TO
+    = ( ^ [X: mu,Y: mu,T: mu] :
+          ( mexists_ind
+          @ ^ [Z: mu] :
+              ( mand @ ( d_TP @ Z @ X @ T ) @ ( d_TP @ Z @ Y @ T ) ) ) ) )).
+
+% Dd22 Temporary Atom
+thf(d_TAt_type,type,(
+    d_TAt: mu > $i > $o )).
+
+thf(d_TAt_def,definition,
+    ( d_TAt
+    = ( ^ [X: mu,T: mu] :
+          ( mnot
+          @ ( mexists_ind
+            @ ^ [Y: mu] :
+                ( d_TPP @ Y @ X @ T ) ) ) ) )).
+
+% Dd23 Temporary Atomic Part
+thf(d_TAtP_type,type,(
+    d_TAtP: mu > mu > $i > $o )).
+
+thf(d_TAtP_def,definition,
+    ( d_TAtP
+    = ( ^ [X: mu,Y: mu,T: mu] :
+          ( mand @ ( d_TP @ X @ Y @ T ) @ ( d_TAt @ X @ T ) ) ) )).
+
+% Dd24 Coincidence
+thf(d_CoInc_type,type,(
+    d_CoInc: mu > mu > mu > $i > $o )).
+
+thf(d_CoInc_def,definition,
+    ( d_CoInc
+    = ( ^ [X: mu,Y: mu,T: mu] :
+          ( mand @ ( d_TP @ X @ Y @ T ) @ ( d_TP @ Y @ X @ T ) ) ) )).
+
+% Dd25 Constant Part
+% remark: PRE is used here before being defined ... odd
+thf(d_PRE_type,type,(
+    d_PRE: mu > mu > $i > $o )).
+
+thf(d_CP_type,type,(
+    d_CP: mu > mu > $i > $o )).
+
+thf(d_CP_def,definition,
+    ( d_CP
+    = ( ^ [X: mu,Y: mu] :
+          ( mand
+          @ ( mexists_ind
+            @ ^ [T: mu] :
+                ( d_PRE @ Y @ T ) )
+          @ ( mforall_ind
+            @ ^ [T: mu] :
+                ( mimplies @ ( d_PRE @ Y @ T ) @ ( d_TP @ X @ Y @ T ) ) ) ) ) )).
+
+% Dd26 (Temporary) Binary Sum 
+thf(d_PlusTE_type,type,(
+    d_PlusTE: mu > mu > $i > $o )).
+
+thf(d_PlusTE_def,definition,
+    ( d_PlusTE
+    = ( ^ [X: mu,Y: mu,World: $i] :
+          ( descr_mu
+          @ ^ [Z: mu] :
+              ( mforall_ind
+              @ ^ [W: mu] :
+                  ( mforall_ind
+                  @ ^ [T: mu] :
+                      ( mimplies @ ( d_TO @ W @ Z @ T ) @ ( mor @ ( d_TO @ W @ X @ T ) @ ( d_TO @ W @ Y @ T ) ) ) )
+              @ World ) ) ) )).
+
+% Dd27 
+% see also comment for Dd19;
+% Actually, the definition of this operator in the DOLCE document is unclear;
+% in particular the argument X is not used in the body of the definition while 
+% Phi is used in the definition but not listed as an argument. This is odd.
+% In summary this axioms seems not well defined yet. Footnote 28 does not help 
+% much either.
+% Todo: contact DOLCE authors and ask for clarification.
+
+% Quality
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Dd28
+thf(d_dqt_type,type,(
+    d_dqt: mu > mu > $i > $o )).
+
+thf(d_dqt_def,definition,
+    ( d_dqt
+    = ( ^ [X: mu,Y: mu] :
+          ( mand @ ( d_qt @ X @ Y )
+          @ ( mnot
+            @ ( mexists_ind
+              @ ^ [Z: mu] :
+                  ( mand @ ( d_qt @ X @ Z ) @ ( d_qt @ Z @ Y ) ) ) ) ) ) )).
+
+% Dd29  (this has quite some higher-order flavor)
+thf(d_qt3_type,type,(
+    d_qt3: ( mu > $i > $o ) > mu > mu > $i > $o )).
+
+thf(d_qt3_def,definition,
+    ( d_qt3
+    = ( ^ [Phi: mu > $i > $o,X: mu,Y: mu] :
+          ( mand @ ( d_qt @ X @ Y ) @ ( mand @ ( Phi @ X ) @ ( d_SBLx @ d_PIx @ d_Q @ Phi ) ) ) ) )).
+
+% Temporal and Spatial Quale
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Dd30
+thf(d_ql_T_PD_type,type,(
+    d_ql_T_PD: mu > mu > $i > $o )).
+
+thf(d_ql_T_PD_def,definition,
+    ( d_ql_T_PD
+    = ( ^ [T: mu,X: mu] :
+          ( mand @ ( d_PD @ X )
+          @ ( mexists_ind
+            @ ^ [Z: mu] :
+                ( mand @ ( d_qt3 @ d_TL @ Z @ X ) @ ( d_ql @ T @ Z ) ) ) ) ) )).
+
+% Dd31
+thf(d_ql_T_ED_type,type,(
+    d_ql_T_ED: mu > mu > $i > $o )).
+
+% definition todo: I could not yet find the defintion of t sigma t' in the Dolce document.
+
+% Dd32
+thf(d_ql_T_TQ_type,type,(
+    d_ql_T_TQ: mu > mu > $i > $o )).
+
+thf(d_ql_T_TQ_def,definition,
+    ( d_ql_T_TQ
+    = ( ^ [T: mu,X: mu] :
+          ( mand @ ( d_TQ @ X )
+          @ ( mexists_ind
+            @ ^ [Z: mu] :
+                ( mand @ ( d_qt @ X @ Z ) @ ( d_ql_T_PD @ T @ Z ) ) ) ) ) )).
+
+% Dd33
+thf(d_ql_T_PQvAQ_type,type,(
+    d_ql_T_PQvAQ: mu > mu > $i > $o )).
+
+thf(d_ql_T_PQvAQ_def,definition,
+    ( d_ql_T_PQvAQ
+    = ( ^ [T: mu,X: mu] :
+          ( mand @ ( mor @ ( d_PQ @ X ) @ ( d_AQ @ X ) )
+          @ ( mexists_ind
+            @ ^ [Z: mu] :
+                ( mand @ ( d_qt @ X @ Z ) @ ( d_ql_T_ED @ T @ Z ) ) ) ) ) )).
+
+% Dd34
+thf(d_ql_T_Q_type,type,(
+    d_ql_T_Q: mu > mu > $i > $o )).
+
+thf(d_ql_T_Q_def,definition,
+    ( d_ql_T_Q
+    = ( ^ [T: mu,X: mu] :
+          ( mor @ ( d_ql_T_TQ @ T @ X ) @ ( d_ql_T_PQvAQ @ T @ X ) ) ) )).
+
+% Dd35 Temporal Quale
+thf(d_ql_T_type,type,(
+    d_ql_T: mu > mu > $i > $o )).
+
+thf(d_ql_T_def,definition,
+    ( d_ql_T
+    = ( ^ [T: mu,X: mu] :
+          ( mor @ ( d_ql_T_ED @ T @ X ) @ ( mor @ ( d_ql_T_PD @ T @ X ) @ ( d_ql_T_Q @ T @ X ) ) ) ) )).
+
+% Dd36
+thf(d_ql_S_PED_type,type,(
+    d_ql_S_PED: mu > mu > mu > $i > $o )).
+
+thf(d_ql_S_PED_def,definition,
+    ( d_ql_S_PED
+    = ( ^ [S: mu,X: mu,T: mu] :
+          ( mand @ ( d_PED @ X )
+          @ ( mexists_ind
+            @ ^ [Z: mu] :
+                ( mand @ ( d_qt3 @ d_SL @ Z @ X ) @ ( d_ql3 @ S @ Z @ T ) ) ) ) ) )).
+
+% Dd37
+thf(d_ql_S_PQ_type,type,(
+    d_ql_S_PQ: mu > mu > mu > $i > $o )).
+
+thf(d_ql_S_PQ_def,definition,
+    ( d_ql_S_PQ
+    = ( ^ [S: mu,X: mu,T: mu] :
+          ( mand @ ( d_PQ @ X )
+          @ ( mexists_ind
+            @ ^ [Z: mu] :
+                ( mand @ ( d_qt @ X @ Z ) @ ( d_ql_S_PED @ S @ Z @ T ) ) ) ) ) )).
+
+% Dd38
+thf(d_ql_S_PD_type,type,(
+    d_ql_S_PD: mu > mu > mu > $i > $o )).
+
+% Remark: mppc seems not defined in the DOLCE document; this is odd.
+%thf(d_ql_S_PD_def,definition,
+%    ( d_ql_S_PD
+%    = ( ^ [S: mu,X: mu,T: mu] :
+%          (mand @ ( d_PD @ X )
+%                @ ( mexists_ind
+%                  @ ^ [Z: mu] :	
+%                     ( mand @ ( d_mppc @ Z @ X ) 
+%                            @ ( d_ql_T_PED @ S @ Z @ T ) ) ) ) ) )).
+
+% Dd39 Spatial Quale
+thf(d_ql_S_type,type,(
+    d_ql_S: mu > mu > mu > $i > $o )).
+
+thf(d_ql_S_def,definition,
+    ( d_ql_S
+    = ( ^ [S: mu,X: mu,T: mu] :
+          ( mor @ ( d_ql_S_PED @ S @ X @ T ) @ ( mor @ ( d_ql_S_PQ @ S @ X @ T ) @ ( d_ql_S_PD @ S @ X @ T ) ) ) ) )).
+
+% Being Present
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Dd40 Being Present at t
+%thf(d_PRE_type,type,(
+%    d_PRE: mu > mu > $i > $o )).
+% PRE has already been used in Dd25 and hence the type for PRE has been
+% declared before (in Dd25)
+
+thf(d_PRE_def,definition,
+    ( d_PRE
+    = ( ^ [X: mu,T: mu] :
+          ( mexists_ind
+          @ ^ [T2: mu] :
+              ( mand @ ( d_ql_T @ T2 @ X ) @ ( d_P @ T @ T2 ) ) ) ) )).
+
+% Dd41 Being Present in s at t
+thf(d_PRE3_type,type,(
+    d_PRE3: mu > mu > mu > $i > $o )).
+
+thf(d_PRE3_def,definition,
+    ( d_PRE3
+    = ( ^ [X: mu,S: mu,T: mu] :
+          ( mand @ ( d_PRE @ X @ T )
+          @ ( mexists_ind
+            @ ^ [S2: mu] :
+                ( mand @ ( d_ql_S @ S2 @ X @ T ) @ ( d_P @ S @ S2 ) ) ) ) ) )).
+
+% Inclusion and Coincidence
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Dd42 Temporal Inclusion
+thf(d_inc_T_type,type,(
+    d_inc_T: mu > mu > $i > $o )).
+
+thf(d_inc_T_def,definition,
+    ( d_inc_T
+    = ( ^ [X: mu,Y: mu] :
+          ( mexists_ind
+          @ ^ [T1: mu] :
+              ( mexists_ind
+              @ ^ [T2: mu] :
+                  ( mand @ ( d_ql_T @ T1 @ X ) @ ( mand @ ( d_ql_T @ T2 @ Y ) @ ( d_P @ T1 @ T2 ) ) ) ) ) ) )).
+
+% Dd43 Proper Temporal Inclusion
+thf(d_pinc_T_type,type,(
+    d_pinc_T: mu > mu > $i > $o )).
+
+thf(d_pinc_T_def,definition,
+    ( d_pinc_T
+    = ( ^ [X: mu,Y: mu] :
+          ( mexists_ind
+          @ ^ [T1: mu] :
+              ( mexists_ind
+              @ ^ [T2: mu] :
+                  ( mand @ ( d_ql_T @ T1 @ X ) @ ( mand @ ( d_ql_T @ T2 @ Y ) @ ( d_PP @ T1 @ T2 ) ) ) ) ) ) )).
+
+% Dd44 Temporary Spatial Inclusion
+thf(d_inc_St_type,type,(
+    d_inc_St: mu > mu > mu > $i > $o )).
+
+thf(d_inc_St_def,definition,
+    ( d_inc_St
+    = ( ^ [X: mu,Y: mu,T: mu] :
+          ( mexists_ind
+          @ ^ [S1: mu] :
+              ( mexists_ind
+              @ ^ [S2: mu] :
+                  ( mand @ ( d_ql_S @ S1 @ X @ T ) @ ( mand @ ( d_ql_S @ S2 @ Y @ T ) @ ( d_P @ S1 @ S2 ) ) ) ) ) ) )).
+
+% Dd45 Temporary Proper Spatial Inclusion
+thf(d_pinc_St_type,type,(
+    d_pinc_St: mu > mu > mu > $i > $o )).
+
+thf(d_pinc_St_def,definition,
+    ( d_pinc_St
+    = ( ^ [X: mu,Y: mu,T: mu] :
+          ( mexists_ind
+          @ ^ [S1: mu] :
+              ( mexists_ind
+              @ ^ [S2: mu] :
+                  ( mand @ ( d_ql_S @ S1 @ X @ T ) @ ( mand @ ( d_ql_S @ S2 @ Y @ T ) @ ( d_P @ S1 @ S2 ) ) ) ) ) ) )).
+
+% Dd46 Spatio-temporal Inclusion
+thf(d_inc_ST_type,type,(
+    d_inc_ST: mu > mu > $i > $o )).
+
+thf(d_inc_ST_def,definition,
+    ( d_inc_ST
+    = ( ^ [X: mu,Y: mu] :
+          ( mand
+          @ ( mexists_ind
+            @ ^ [T: mu] :
+                ( d_PRE @ X @ T ) )
+          @ ( mforall_ind
+            @ ^ [T: mu] :
+                ( mimplies @ ( d_PRE @ X @ T ) @ ( d_inc_St @ X @ Y @ T ) ) ) ) ) )).
+
+
+% Dd47 Spatio-temporal Inclusion during t
+thf(d_inc_STt_type,type,(
+    d_inc_STt: mu > mu > mu > $i > $o )).
+
+thf(d_inc_STt_def,definition,
+    ( d_inc_STt
+    = ( ^ [X: mu,Y: mu,T: mu] :
+          ( mand 
+          @ ( d_PRE @ X @ T)
+          @ ( mforall_ind
+            @ ^ [T2: mu] :
+                ( mimplies @ ( d_AtP @ T2 @ T ) @ ( d_inc_St @ X @ Y @ T2 ) ) ) ) ) )).
+
+% Dd48 Temporal Coincidence
+thf(d_coinc_T_type,type,(
+    d_coinc_T: mu > mu > $i > $o )).
+
+thf(d_coinc_T,definition,
+    ( d_coinc_T
+    = ( ^ [X: mu,Y: mu] :
+          ( mand 
+          @ ( d_inc_T @ X @ Y)
+          @ ( d_inc_T @ Y @ X) ) ) )).
+
+% Dd49 Temporary Spatial Coincidence
+thf(d_coinc_St_type,type,(
+    d_coinc_St: mu > mu > mu > $i > $o )).
+
+thf(d_coinc_St,definition,
+    ( d_coinc_St
+    = ( ^ [X: mu,Y: mu,T: mu] :
+          ( mand 
+          @ ( d_inc_St @ X @ Y @ T)
+          @ ( d_inc_St @ Y @ X @ T) ) ) )).
+
+% Dd50 Spatio-temporal Coincidence
+thf(d_coinc_ST_type,type,(
+    d_coinc_ST: mu > mu > $i > $o )).
+
+thf(d_coinc_ST,definition,
+    ( d_coinc_ST
+    = ( ^ [X: mu,Y: mu] :
+          ( mand 
+          @ ( d_inc_ST @ X @ Y)
+          @ ( d_inc_ST @ Y @ X) ) ) )).
+
+% Dd51 Spatio-temporal Coincidence during t
+thf(d_coinc_STt_type,type,(
+    d_coinc_STt: mu > mu > mu > $i > $o )).
+
+thf(d_coinc_STt,definition,
+    ( d_coinc_STt
+    = ( ^ [X: mu,Y: mu,T: mu] :
+          ( mand 
+          @ ( d_PRE @ X @ T)
+          @ ( mforall_ind
+            @ ^ [T2: mu] :
+                ( mimplies @ ( d_AtP @ T2 @ T ) @ ( d_coinc_St @ X @ Y @ T2 ) ) ) ) ) )).
+
+% Dd52 Temporary Overlap
+thf(d_overl_T_type,type,(
+    d_overl_T: mu > mu > mu > $i > $o )).
+
+thf(d_overl_T,definition,
+    ( d_overl_T
+    = ( ^ [X: mu,Y: mu] :
+          ( mexists_ind
+          @ ^ [T1: mu] :
+              ( mexists_ind
+              @ ^ [T2: mu] :
+                  ( mand @ ( d_ql_T @ T1 @ X ) @ ( mand @ ( d_ql_T @ T2 @ Y ) @ ( d_O @ T1 @ T2 ) ) ) ) ) ) )).
+
+% Dd53 Temporary Spatial Overlap
+thf(d_overl_St_type,type,(
+    d_overl_St: mu > mu > mu > $i > $o )).
+
+thf(d_overl_St,definition,
+    ( d_overl_St
+    = ( ^ [X: mu,Y: mu,T: mu] :
+          ( mexists_ind
+          @ ^ [S1: mu] :
+              ( mexists_ind
+              @ ^ [S2: mu] :
+                  ( mand @ ( d_ql_S @ S1 @ X @ T ) @ ( mand @ ( d_ql_S @ S2 @ Y @ T ) @ ( d_O @ S1 @ S2 ) ) ) ) ) ) )).
+
+
+% Perdurant
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Dd54 Temporal Part
+thf(d_P_T_type,type,(
+    d_P_T: mu > mu > mu > $i > $o )).
+
+thf(d_P_T,definition,
+    ( d_P_T
+    = ( ^ [X: mu,Y: mu] :
+          ( mand 
+          @ ( d_PD @ X ) 
+          @ ( mand 
+            @ ( d_P @ X @ Y ) 
+            @ ( mforall_ind
+              @ ^ [Z: mu] : 
+                  ( mimplies 
+                  @ ( mand @ ( d_P @ Z @ Y ) @ ( d_inc_T @ Z @ X ) )
+                  @ ( d_P @ Z @ X ) ) ) ) ) ) )). 
+
+% Dd55 Spatial Part
+thf(d_P_S_type,type,(
+    d_P_S: mu > mu > mu > $i > $o )).
+
+thf(d_P_S,definition,
+    ( d_P_S
+    = ( ^ [X: mu,Y: mu] :
+          ( mand 
+          @ ( d_PD @ X ) 
+          @ ( mand 
+            @ ( d_P @ X @ Y ) 
+            @ ( d_coinc_T @ X @ Y ) ) ) ) )).
+
+% todo: to be continued
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Inconsistency check: try to infer 'false' from axioms.
+thf(con,conjecture,( $false )).
+
+% Some simple tests
+% thf(test1,conjecture,
+%     ( mvalid 
+%     @ ( mforall_ind
+%       @ ^ [X: mu] :
+%           ( mforall_ind
+%           @ ^ [Y: mu] :
+%               ( mnot @ ( mand @ ( d_PP @ X @ Y ) @ ( d_PP @ Y @ X ) ) ) ) ) )).

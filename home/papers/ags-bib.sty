@@ -1,0 +1,281 @@
+%%% Style file to use with our AGS BibTeX styles
+%%% Load ags-named.sty if you want to use ags-named.bst
+
+\ProvidesPackage{ags-bib}
+
+% Initialization
+
+\RequirePackage{ifthen}
+\newboolean{short}
+
+% Declaration of Options
+\newif\ifshort\shorttrue
+
+\DeclareOption{short}{\global\shorttrue}
+\DeclareOption{long}{\global\shortfalse}
+
+% Process Options
+
+\ExecuteOptions{short}
+\ProcessOptions
+
+
+% Main Part
+
+\newif\ifgerman\germanfalse
+\newif\iffrench\frenchfalse
+%\newcommand{\newblock}{}
+
+%%% Entries
+
+\def\nUMBER{
+  \ifshort
+  \ifgerman{Nr.}\else{no.}\fi
+  \else
+  \ifgerman{Nummer}\else{\iffrench{num\'ero}\else{number}\fi}\fi
+  \fi
+}
+\def\NUMBER{
+  \ifshort
+  \ifgerman{Nr.}\else{No.}\fi
+  \else
+  \ifgerman{Nummer}\else{\iffrench{Num\'ero}\else{Number}\fi}\fi
+  \fi
+}
+\def\nUMBERs{
+  \ifshort
+  \ifgerman{Nr.}\else{nos.}\fi
+  \else
+  \ifgerman{Nummern}\else{\iffrench{num\'eros}\else{numbers}\fi}\fi
+  \fi
+}
+\def\NUMBERs{
+  \ifshort
+  \ifgerman{Nr.}\else{Nos.}\fi
+  \else
+  \ifgerman{Nummern}\else{\iffrench{Num\'eros}\else{Numbers}\fi}\fi
+  \fi
+}
+\def\vOLUME{
+  \ifshort
+  \ifgerman{Bd.}\else{vol.}\fi
+  \else
+  \ifgerman{Band}\else{volume}\fi
+  \fi
+}
+\def\VOLUME{
+  \ifshort
+  \ifgerman{Bd.}\else{Vol.}\fi
+  \else
+  \ifgerman{Band}\else{Volume}\fi
+  \fi
+}
+\def\vOLUMEs{
+  \ifshort
+  \ifgerman{Bde.}\else{vols.}\fi
+  \else
+  \ifgerman{B\"ande}\else{volumes}\fi
+  \fi
+}
+\def\VOLUMEs{
+  \ifshort
+  \ifgerman{Bde.}\else{Vols.}\fi
+  \else
+  \ifgerman{B\"ande}\else{Volumes}\fi
+  \fi
+}
+\def\EDITION{
+  \ifshort
+  \ifgerman{Aufl.}\else{\iffrench{\'Ed.}\else{ed.}\fi}\fi
+  \else
+  \ifgerman{Auflage}\else{\iffrench{\'Edition}\else{edition}\fi}\fi
+  \fi
+}
+\def\EDITOR{
+  \ifshort
+  \ifgerman{Hrsg.}\else{\iffrench{\'ed.}\else{ed.}\fi}\fi
+  \else
+  \ifgerman{Herausgeber}\else{editor}\fi
+  \fi
+}
+\def\EDITORS{
+  \ifshort
+  \ifgerman{Hrsg.}\else{\iffrench{\'eds.}\else{eds.}\fi}\fi
+  \else
+  \ifgerman{Herausgeber}\else{editors}\fi
+  \fi
+}
+\def\TRANSLATOR{
+  \ifshort
+  \ifgerman{\"Ubers.}\else{Trans.}\fi
+  \else
+  \ifgerman{\"Ubersetzer}\else{Translator}\fi
+  \fi
+}
+\def\TRANSLATORS{
+  \ifshort
+  \ifgerman{\"Ubers.}\else{Trans.}\fi
+  \else
+  \ifgerman{\"Ubersetzer}\else{Translators}\fi
+  \fi
+}
+\def\PAGE{
+  \ifshort
+  \ifgerman{S.}\else{p.}\fi
+  \else
+  \ifgerman{Seite}\else{page}\fi
+  \fi
+}
+\def\PAGES{%
+  \ifshort
+  \ifgerman{S.}\else{pp.}\fi
+  \else
+  \ifgerman{Seiten}\else{pages}\fi
+  \fi}
+\def\CHAPTER{
+  \ifshort
+  \ifgerman{Kap.}\else{chap.}\fi
+  \else
+  \ifgerman{Kapitel}\else{\iffrench{chapitre}\else{chapter}\fi}\fi
+  \fi
+}
+\def\TECHNICALREPORT{
+  \ifshort
+  \ifgerman{Techn.\ Ber.}\else{\iffrench{Rap\-port}\else{Tech.\ rep.}\fi}\fi
+  \else
+  \ifgerman{Technischer Bericht}\else{\iffrench{Rap\-port}\else{Technical report}\fi}\fi
+  \fi
+}
+\def\AVAILABLE{\ifgerman{Erh\"altlich unter}\else{\iffrench{Disponible \`a}\else{Available from}\fi}\fi}
+
+
+
+\def\AND{\ifgerman{und}\else{\iffrench{et}\else{and}\fi}\fi}
+\def\KOMMAAND{\ifgerman{}\else{\iffrench{}\else{,\ }\fi}\fi}
+\def\OF{\ifgerman{in}\else{\iffrench{en}\else{of}\fi}\fi}
+\def\IN{\ifgerman{In:}\else{\iffrench{Dans:}\else{In:}\fi}\fi}
+\def\technicalreport{\TECHNICALREPORT}
+\def\PHD{\ifgerman{Dissertation}\else{\iffrench{Dissertation}\else{Ph.D.\ thesis}\fi}\fi}
+\def\DIPLOMARBEIT{\ifgerman{Diplomarbeit}\else{\iffrench{Th\`ese de
+      dipl\^ome}\else{Master Thesis}\fi}\fi}
+\def\PROJEKTARBEIT{\ifgerman{Projektarbeit}\else{\iffrench{Th\`ese
+      pr\'ealable}\else{Intermediate Thesis}\fi}\fi}
+
+\def\fc{\typeout{Warning: noticed "Forthcoming" in citation, has this
+    appeared?}\ifgerman{angenommen}\else{\iffrench{accept\'e}\else{forthcoming}\fi}\fi}
+\def\inpress{\typeout{Warning: noticed "In press" in citation, has this
+    appeared?}\ifgerman{in Druck}\else{in press}\fi}
+\def\inprep{\typeout{Warning: noticed "In prep." in citation, has this
+    appeared?}\ifgerman{in Vorbereitung}\else{in prep.}\fi}
+\def\TOAPPEAR{\fc}
+\def\up{\ifgerman{unver"offentlicht}\else{unpublished}\fi}
+\def\TOGETHER{\ifgerman{zusammen mit}\else{\iffrench{avec}\else{together with}\fi}\fi}
+
+
+%%% Macros
+
+\def\JACM{Journal of the ACM}
+\def\JAR{Journal of Automated Reasoning}
+\def\JLC{Journal of Logic and Computation}
+\def\JSC{Journal of Symbolic Computation}
+\def\JSL{The Journal of Symbolic Logic}
+\def\LNAI{\ifshort{LNAI}\else{Lecture Notes in Artificial Intelligence}\fi}
+\def\LNCS{\ifshort{LNCS}\else{Lecture Notes in Computer Science}\fi}
+\def\LNPAM{LNPAM}
+\def\MATHANN{Ma\-the\-ma\-ti\-sche An\-na\-len}
+\def\MI{Machine Intelligence}
+\def\SR{{SEKI R}eport}
+\def\SWP{{SEKI W}orking {P}aper}
+\def\CADE {{I}nternational {C}onference on {A}utomated {D}eduction}
+\def\AI{{J}ournal of {A}rtificial {I}ntelligence}
+\def\IJCAI{{I}nternational {J}oined {C}onference on {A}rtificial {I}ntelligence}
+
+\def\PROC{{Proceedings}}
+%wird nicht gebraucht\def\proc{\PROC} 
+\def\VerlagNH{{North-Holland Publishing Company}}
+\def\VerlagReidel{D.~Reidel Publishing Company}
+
+\def\UdS{Universit\"at des Saarlandes}
+\def\AddressUdS{Im Stadtwald, \Saarbruecken\Germany}
+\def\UdSAddress{\AddressUdS}
+\def\UKL{Universit\"at Kaiserslautern}
+\def\FBI{\ifgerman{Fachbereich Informatik}\else{\iffrench{D\'epartement
+      d'Informatique}\else{Computer Science Department}\fi}\fi}
+\def\Saarbruecken{\ifgerman{Saar\-br\"ucken}\else{\iffrench{Sarrebruck}\else{Saar\-br\"ucken}\fi}\fi}
+
+\def\Wintersemester{\ifgerman{Win\-ter\-se\-me\-ster}\else{\iffrench{hiver}\else{Winter}\fi}\fi}
+\def\Sommersemester{\ifgerman{Som\-mer\-se\-me\-ster}\else{\iffrench{\'et\'e}\else{Summer}\fi}\fi}
+\def\UNI{\ifgerman{Universit\"at}\else{\iffrench{Universit\'e}\else{University}\fi}\fi}
+
+\def\SRI{SRI International}
+\def\IRST{IRST (Istituto per la Ricerca Scientifica e Tecnologica)}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Laender %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\AUSTRALIA{\ifgerman{Australien}\else{\iffrench{Australie}\else{Australia}\fi}\fi}
+\def\AUSTRIA{\ifgerman{\"Osterreich}\else{\iffrench{Autriche}\else{Austria}\fi}\fi}
+\def\BELGIUM{\ifgerman{Belgien}\else{\iffrench{Belgique}\else{Belgium}\fi}\fi}
+\def\BULGARIA{\ifgerman{Bulgarien}\else{\iffrench{Bulgarie}\else{Bulgaria}\fi}\fi}
+\def\CANADA{\ifgerman{Kanada}\else{\iffrench{\Canada}\else{Canada}\fi}\fi}
+\def\CALIFORNIA{\ifgerman{Kalifornien, USA}\else{\iffrench{Californie}\else{California}\fi}\fi}
+\def\FRANCE{\ifgerman{, Frankreich}\else{\iffrench{}\else{, France}\fi}\fi}
+\def\GERMANY{\ifgerman{}\else{\iffrench{, Allemagne}\else{, Germany}\fi}\fi}
+\def\Germany{\GERMANY}
+\def\HUNGARY{\ifgerman{Ungarn}\else{\iffrench{Hungair}\else{Hungary}\fi}\fi}
+\def\ITALY{\ifgerman{Italien}\else{\iffrench{Italie}\else{Italy}\fi}\fi}
+\def\JAPAN{\ifgerman{Japan}\else{\iffrench{Japon}\else{Japan}\fi}\fi}
+\def\NETHERLANDS{\ifgerman{Niederlande}\else{\iffrench{Pays Bas}\else{The Netherlands}\fi}\fi}
+\def\NEUSEELAND{\ifgerman{Neuseeland}\else{\iffrench{Nouvelle-Z\'elande}\else{New Zealand}\fi}\fi}
+\def\POLAND{\ifgerman{Polen}\else{\iffrench{la Pologne}\else{Poland}\fi}\fi}
+\def\PORTUGAL{Portugal}
+\def\UCRAINE{\ifgerman{Ukraine}\else{\iffrench{Ucraine}\else{Ucraine}\fi}\fi}
+\def\UK{
+  \ifshort
+  {UK}
+  \else
+  \ifgerman{Gro{\ss}britannien}\else{\iffrench{Grande-Bretagne}\else{United
+      Kingdom}\fi}\fi
+  \fi}
+\def\RUSSIA{\ifgerman{Ru{\ss}land}\else{\iffrench{Russie}\else{Russia}\fi}\fi}
+\def\SCHWEIZ{\ifgerman{Schweiz}\else{\iffrench{Suisse}\else{Switzerland}\fi}\fi}
+\def\SPAIN{\ifgerman{Spanien}\else{\iffrench{\'Espagne}\else{Spain}\fi}\fi}
+\def\SWEDEN{\ifgerman{Schweden}\else{\iffrench{Su\`ede}\else{Sweden}\fi}\fi}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Monate  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\JANUARY{\ifgerman{Januar }\else{\iffrench{janvier }\else{January }\fi}\fi}
+\def\FEBRUARY{\ifgerman{Februar }\else{\iffrench{f\'evrier }\else{February }\fi}\fi}
+\def\MARCH{\ifgerman{M\"arz }\else{\iffrench{mars }\else{March }\fi}\fi}
+\def\APRIL{\ifgerman{April }\else{\iffrench{avril }\else{April }\fi}\fi}
+\def\MAY{\ifgerman{Mai }\else{\iffrench{mai }\else{May }\fi}\fi}
+\def\JUNE{\ifgerman{Juni }\else{\iffrench{juin }\else{June }\fi}\fi}
+\def\JULY{\ifgerman{Juli }\else{\iffrench{juillet }\else{July }\fi}\fi}
+\def\AUGUST{\ifgerman{August }\else{\iffrench{ao\^ut }\else{August }\fi}\fi}
+\def\SEPTEMBER{\ifgerman{September }\else{\iffrench{septembre }\else{September }\fi}\fi}
+\def\OCTOBER{\ifgerman{Oktober }\else{\iffrench{octobre }\else{October }\fi}\fi}
+\def\NOVEMBER{\ifgerman{November }\else{\iffrench{novembre }\else{November }\fi}\fi}
+\def\DECEMBER{\ifgerman{Dezember }\else{\iffrench{d\'ecembre }\else{December }\fi}\fi}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Aufz"ahlungen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\FIRST{\ifgerman{erste}\else{\iffrench{$1^{\mbox{\tiny {\'ere}}}$}\else{1st}\fi}\fi}
+\def\SECOND{\ifgerman{zweite}\else{\iffrench{$2^e$}\else{2nd}\fi}\fi}
+\def\THIRD{\ifgerman{dritte}\else{\iffrench{$3^e$}\else{3rd}\fi}\fi}
+\def\FOURTH{\ifgerman{vierte}\else{\iffrench{$4^e$}\else{4th}\fi}\fi}
+\def\FIFTH{\ifgerman{f\"unfte}\else{\iffrench{$5^e$}\else{5th}\fi}\fi}
+\def\SIXTH{\ifgerman{sechste}\else{\iffrench{$6^e$}\else{6th}\fi}\fi}
+\def\SEVENTH{\ifgerman{siebte}\else{\iffrench{$7^e$}\else{7th}\fi}\fi}
+\def\EIGHTH{\ifgerman{achte}\else{\iffrench{$8^e$}\else{8th}\fi}\fi}
+\def\NINTH{\ifgerman{neunte}\else{\iffrench{$9^e$}\else{9th}\fi}\fi}
+\def\TENTH{\ifgerman{zehnte}\else{\iffrench{$10^e$}\else{10th}\fi}\fi}
+\def\ELEVENTH{\ifgerman{elfte}\else{\iffrench{$11^e$}\else{11th}\fi}\fi}
+\def\TWELVETH{\ifgerman{zw{\"o}lfte}\else{\iffrench{$12^e$}\else{12th}\fi}\fi}
+
+\def\third{\THIRD}
+
+\def\TH{\ifgerman{.}\else{\iffrench{$^e$}\else{th}\fi}\fi}
+\def\ST{\ifgerman{.}\else{\iffrench{$^e$}\else{st}\fi}\fi}
+\def\ND{\ifgerman{.}\else{\iffrench{$^e$}\else{nd}\fi}\fi}
+\def\RD{\ifgerman{.}\else{\iffrench{$^e$}\else{rd}\fi}\fi}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\einstellungen{}
+\def\shortcite{\cite}

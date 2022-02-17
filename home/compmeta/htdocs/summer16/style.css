@@ -1,0 +1,106 @@
+h1 {
+  margin-top:10px;
+}
+
+h2::before {
+  content: "» ";
+}
+
+h2 {
+font-variant: small-caps;
+}
+
+h2 + section {
+  border-left:2px solid #d0d0d0;margin-left:1em; padding-left:2em;
+}
+
+dt {
+  display: inline-block;
+  min-width: 4em;
+}
+
+dd {
+  display: inline
+}
+
+dd::after {
+ content: '\A';
+ display: block;
+}
+
+a.external::after {
+  content: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIj48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtODI2LjQyOSAtNjk4Ljc5MSkiPjxyZWN0IHdpZHRoPSI1Ljk4MiIgaGVpZ2h0PSI1Ljk4MiIgeD0iODI2LjkyOSIgeT0iNzAyLjMwOSIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjMDZjIi8+PGc+PHBhdGggZD0iTTgzMS4xOTQgNjk4Ljc5MWg1LjIzNHY1LjM5MWwtMS41NzEgMS41NDUtMS4zMS0xLjMxLTIuNzI1IDIuNzI1LTIuNjg5LTIuNjg5IDIuODA4LTIuODA4LTEuMzExLTEuMzExeiIgZmlsbD0iIzA2ZiIvPjxwYXRoIGQ9Ik04MzUuNDI0IDY5OS43OTVsLjAyMiA0Ljg4NS0xLjgxNy0xLjgxNy0yLjg4MSAyLjg4MS0xLjIyOC0xLjIyOCAyLjg4MS0yLjg4MS0xLjg1MS0xLjg1MXoiIGZpbGw9IiNmZmYiLz48L2c+PC9nPjwvc3ZnPg==);
+  margin-left: 3px;
+}
+
+span.sc {
+  font-variant: small-caps;
+}
+
+
+
+body {
+  border-left:3px solid #b0b0b0;
+  background-color: #fcfcfc;
+}
+
+#header {
+  background-color: #f4f4f4;
+  border-bottom: 1px solid #d0d0d0;
+  /*border-radius: 5px;*/
+  /*box-shadow: 2px 2px 2px #888888;*/
+}
+
+#header div {
+  padding-top: .7em;
+  text-align:center;
+}
+
+@media (min-width: 992px) { 
+  #header div {
+    text-align:left;
+  }
+  
+  div.optional {
+    display:inline;
+  }
+}
+
+.noindent {
+  margin-left: -1.5em;
+}
+
+.swaplist li:nth-child(even) {
+  background-color: #f9f9f9
+}
+
+ul.highlight-on-hover li:hover, ol.highlight-on-hover li:hover {
+  background-color: #ededed !important;
+}
+
+.lesslist-5 li:nth-child(1n+7){
+  display: none;
+}
+
+
+.optional {
+  display:none;
+}
+
+content {
+  margin-left:2em;
+  border-left: 1px solid black;
+  padding-left: 2em;
+}
+
+footer {
+  border-top: 1px solid #d0d0d0
+}
+
+footer > div {
+  color:#d0d0d0;float:left
+}
+
+footer > a {
+  float:right
+}

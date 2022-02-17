@@ -1,0 +1,168 @@
+\begin{thebibliography}{27}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[{\SortNoop{Atten}}van~Atten and Kennedy(2003)]{atten:03}
+Mark {\SortNoop{Atten}}van~Atten and Juliette Kennedy.
+\newblock On the philosophical development of {K}urt {G}{\"{o}}del.
+\newblock \emph{The Bulletin of Symbolic Logic}, 9:\penalty0 425--476, 2003.
+
+\bibitem[Crocco and Engelen(2016)]{crocco:KGP-S}
+Gabriella Crocco and Eva-Maria Engelen, editors.
+\newblock \emph{Kurt {G}{\"{o}}del Philosopher-Scientist}.
+\newblock Presses Universitaires de Provence, Aix-en-Provence, 2016.
+
+\bibitem[Crocco et~al.(2017)Crocco, Van~Atten, Cant{\`{u}}, and
+  Engelen]{crocco:hal-01459188}
+Gabriella Crocco, Mark Van~Atten, Paola Cant{\`{u}}, and Eva-Maria Engelen.
+\newblock \emph{{Kurt G{\"o}del Maxims and Philosophical Remarks Volume X}}.
+\newblock February 2017.
+\newblock URL \url{https://hal.archives-ouvertes.fr/hal-01459188}.
+
+\bibitem[Feferman et~al.(1986--2002)]{goed:coll}
+Solomon Feferman et~al., editors.
+\newblock \emph{Collected Works}, volume 1--5.
+\newblock Oxford University Press, New York, Oxford, 1986--2002.
+
+\bibitem[Feferman et~al.(1990{\natexlab{a}})]{goed:bicen}
+Solomon Feferman et~al., editors.
+\newblock \emph{Remarks before the {P}rinceton bicentennial conference on
+  problems in mathematics}, pages 150--153.
+\newblock Volume~2 of  \citet{goed:coll}, 1990{\natexlab{a}}.
+
+\bibitem[Feferman et~al.(1990{\natexlab{b}})]{goed:cantor-orig-64}
+Solomon Feferman et~al., editors.
+\newblock \emph{What is {C}antor's continuum problem (1964)}, pages 254--270.
+\newblock Volume~2 of  \citet{goed:coll}, 1990{\natexlab{b}}.
+
+\bibitem[Feferman et~al.(1990{\natexlab{c}})]{goed:ext}
+Solomon Feferman et~al., editors.
+\newblock \emph{On an extension of finitary mathematics which has not yet been
+  used}, pages 271--280.
+\newblock Volume~2 of  \citet{goed:coll}, 1990{\natexlab{c}}.
+
+\bibitem[Feferman et~al.(1990{\natexlab{d}})]{goed:remarks}
+Solomon Feferman et~al., editors.
+\newblock \emph{Some remarks on the undecidability results}, pages 305--306.
+\newblock Volume~2 of  \citet{goed:coll}, 1990{\natexlab{d}}.
+
+\bibitem[Feferman et~al.(1990{\natexlab{e}})]{goed:russell}
+Solomon Feferman et~al., editors.
+\newblock \emph{Russell's mathematical logic}, pages 119--141.
+\newblock Volume~2 of  \citet{goed:coll}, 1990{\natexlab{e}}.
+
+\bibitem[Feferman et~al.(1995{\natexlab{a}})]{goed:kant}
+Solomon Feferman et~al., editors.
+\newblock \emph{Some observations about the relationship between theory of
+  relativity and {K}antian philosophy}, pages 230--259.
+\newblock Volume~3 of  \citet{goed:coll}, 1995{\natexlab{a}}.
+
+\bibitem[Feferman et~al.(1995{\natexlab{b}})]{goed:modern}
+Solomon Feferman et~al., editors.
+\newblock \emph{The modern development of the foundations of mathematics in the
+  light of philosophy}, pages 374--387.
+\newblock Volume~3 of  \citet{goed:coll}, 1995{\natexlab{b}}.
+
+\bibitem[Feferman et~al.(1995{\natexlab{c}})]{goed:onto}
+Solomon Feferman et~al., editors.
+\newblock \emph{Ontological proof / {A}ppendix {B}: {T}exts relating to the
+  ontological proof}, pages 403--404, 429--437.
+\newblock Volume~3 of  \citet{goed:coll}, 1995{\natexlab{c}}.
+
+\bibitem[G\"odel(1969)]{Godel1969-GDEAIO}
+K.~G\"odel.
+\newblock An interpretation of the intuitionistic sentential calculus.
+\newblock In Jaakko Hintikka, editor, \emph{The Philosophy of Mathematics}.
+  London: Oxford University Press, 1969.
+
+\bibitem[G{\"{o}}del(1930)]{godel30:_volls_axiom_funkt}
+Kurt G{\"{o}}del.
+\newblock {Die Vollst{\"a}ndigkeit der Axiome des logischen
+  Funktionenkalk{\"u}ls}.
+\newblock \emph{Monatsheften für Mathematik und Physik}, 37\penalty0 (2),
+  1930.
+
+\bibitem[G{\"{o}}del(1933)]{Godel1933}
+Kurt G{\"{o}}del.
+\newblock {Eine Interpretation des intuitionistischen Aussagenkalk\"{u}ls}.
+\newblock \emph{Ergebnisse eines mathematischen Kolloquiums}, 4:\penalty0
+  39--40, 1933.
+
+\bibitem[G{\"{o}}del(1949))]{godel9:_einst}
+Kurt G{\"{o}}del.
+\newblock An example of a new type of cosmological solutions of einstein's
+  field equations of gravitation.
+\newblock \emph{Rev. Mod. Phys.}, 21:\penalty0 447--450, 1949).
+
+\bibitem[G{\"{o}}del(1986{\natexlab{a}})]{goed:undec}
+Kurt G{\"{o}}del.
+\newblock On formally undecidable propositions of \textit{{P}rincipia
+  {M}athematica} and related systems {I}.
+\newblock In  \citet{goed:coll}, pages 145--195.
+
+\bibitem[G{\"{o}}del(1986{\natexlab{b}})]{goed:undec-prop}
+Kurt G{\"{o}}del.
+\newblock On undecidable propositions of formal mathematical systems.
+\newblock In  \citet{goed:coll}, pages 346--371.
+
+\bibitem[G{\"{o}}del(1995)]{goed:basic}
+Kurt G{\"{o}}del.
+\newblock \emph{Some basic theorems on the foundations of mathematics and their
+  implications}, pages 304--323.
+\newblock Volume~3 of  \citet{goed:coll}, 1995.
+
+\bibitem[Goldstein(2006)]{goldstein06:_incom}
+Rebecca Goldstein.
+\newblock \emph{Incompleteness: The Proof and Paradox of Kurt Gödel: The Proof
+  and Paradox of Kurt Godel (Great Discoveries)}.
+\newblock W.W. Norton Company, 2006.
+
+\bibitem[Kennedy(2014)]{kennedy14}
+Juliette Kennedy, editor.
+\newblock \emph{Interpreting {Gödel}: Critical Essays}.
+\newblock Cambridge University Press, 2014.
+\newblock URL
+  \url{http://assets.cambridge.org/97811070/02661/frontmatter/9781107002661_frontmatter.pdf}.
+
+\bibitem[Kennedy(2018)]{sep-goedel}
+Juliette Kennedy.
+\newblock {Kurt Gödel}.
+\newblock In Edward~N. Zalta, editor, \emph{The Stanford Encyclopedia of
+  Philosophy}. Metaphysics Research Lab, Stanford University, winter 2018
+  edition, 2018.
+
+\bibitem[Nagel et~al.(2001)Nagel, Newman, and Hofstadter]{nagel01}
+Ernest Nagel, James~R. Newman, and Douglas~R. Hofstadter.
+\newblock \emph{Gödel's Proof}.
+\newblock NYU Press, 2001.
+
+\bibitem[Von~Plato(2018{\natexlab{a}})]{vanPlatoBSL18}
+Jan Von~Plato.
+\newblock Kurt gÖdel’s first steps in logic: Formal proofs in arithmetic and
+  set theory through a system of natural deduction.
+\newblock \emph{The Bulletin of Symbolic Logic}, 24\penalty0 (3):\penalty0
+  319–335, 2018{\natexlab{a}}.
+\newblock \doi{10.1017/bsl.2017.42}.
+
+\bibitem[Von~Plato(2018{\natexlab{b}})]{vanPlatoICM18}
+Jan Von~Plato.
+\newblock In search of the sources of incompleteness.
+\newblock In \emph{Proc. Int. Cong. of Math. – 2018}, pages 21--30,
+  2018{\natexlab{b}}.
+\newblock \doi{10.9999/icm2018-v1-p21}.
+
+\bibitem[Wang(1996)]{wang:96}
+Hao Wang.
+\newblock \emph{A Logical Journey}.
+\newblock The MIT Press, Cambridge, Mass., 1996.
+
+\bibitem[Yourgrau(1991)]{Yourgrau1991-YOUTDO-4}
+Palle Yourgrau.
+\newblock \emph{The Disappearance of Time: {Kurt G\"odel} and the Idealistic
+  Tradition in Philosophy}.
+\newblock Cambridge University Press, 1991.
+
+\end{thebibliography}

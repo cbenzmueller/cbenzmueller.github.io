@@ -1,0 +1,87 @@
+\documentclass{article}
+
+\title{Topics for Thesis Projects} 
+\author{Christoph Benzm\"uller}
+
+\begin{document}
+\maketitle
+
+\section{Fast Clause Normalization for Higher-Order  Automated Theorem Proving}
+The task consist in extending the techniques for fast first-order
+clause normalization, as, for example, employed in Flotter
+\cite{DBLP:conf/cade/WeidenbachGR96} to higher-order logic
+\cite{Andrews86} and to make them available in the LEO-II theorem
+prover \cite{C26}. This work is theoretically and practically demanding.
+
+\section{Agent-Based Architecture for Cooperative Automated Theorem Proving in Higher-Order and First-Order Logic}
+The old LEO-I system \cite{C3} was prototypically integrated with
+first-order automated theorem provers using the agent based OANTS
+architecture \cite{C6,C7,C8}. This integration has been shown superior
+over pure first-order automated theorem proving in selected problem
+domains \cite{J16}.
+
+The task is to develop a new and ideally improved OANTS architecture
+for the new LEO-II prover \cite{C26}, which is currently using a
+primitive, sequential interaction model. The new agent based solution
+should ideally support and exploit incremental first-order theorem
+provers (e.g., theorem prover E \cite{Sch02-AICOMM} has such an incremental mode).
+Moreover, the integration should support semantic brokering of reasoning systems in TPTP (www.tptp.org)
+based on ideas as also exploited in the MathServe system \cite{DBLP:conf/cade/ZimmerA06}.
+This task is practically very demanding and also theoretically challenging.
+
+A reduced task is to simply concentrate on the (redevelopment of the) OANTS architecture.
+
+
+\section{Homogeneous Proof Representation for Cooperative Higher-Order-First-Order Resolution Proofs}
+LEO-II cooperates with first-order automated theorem provers
+\cite{C26}. The first-order provers typically refute a subset of
+LEO-II's dynamically growing clause set. Currently the proof output of
+LEO-II does not provide detailed information on the proof steps
+performed by the first-order provers but instead handles this part of
+the proof simply as a black box. The task is to develop a tool (inside or independent
+of LEO-II) that generates detailled proof output for such cooperative higher-order-first-order
+proofs. The work needs to be carried out in close collaboration with the TPTP project (www.tptp.org)
+and should exploit and propose new TPTP proof representation standards. 
+
+
+\section{A Proof Verifier for Higher-Order Resolution Proofs}
+The task is to develop an independent proof verifier for higher-order
+resolution proofs that are represented in the new TPTP higher-order
+proof representation language -- this is also the native proof
+language of LEO-II. The techniques exploited may be freely
+chosen/proposed by the student.  E.g., they may consist on combinatory
+logic and exploit first-order reasoners or they may be based on a
+small, trusted higher-order calulus. In any case, the chosen solution should make
+use of the fact that only small steps need to be verified one by one.
+This task is theoretically and practically demanding.
+
+
+\section{A Resolution based Theorem  Prover for the Basic Fragment of  Simple Type Theory}
+The basic fragment of simple type theory is simple type theory
+\cite{Andrews86} for the single base type $o$ of Booleans. This
+fragment is decidable.  The question is whether this fragment can be
+efficiently automated exploiting the ideas underlying LEO-II's
+extansional higher-order resolution calculus \cite{T2}. Ideally, a
+decidability result can be given and a fast implementation within
+LEO-II can be realized.  This task is theoretically and practically demanding.
+
+
+\section{A Web Service to Search Data in TPTP Format (Frank Theiss)}
+The web service will exploit CompleteSearch (MPII,
+http://search.mpi-inf.mpg.de/) with its features for auto completion
+and prefix search to find a suitable data model for a query to the
+TPTP library (www.tptp.org), covering both formal data (the formulae)
+and informal data (the comments).  The task includes to find a
+reasonable set of prefixes for structured search (e.g. symbol:union,
+logic:thf, author:sutcliffe) and to implement a toolchain to read in
+TPTP files and build indexes for the CompleteSearch
+server. Furthermore, the task involves the implemention/adaption of
+the search engines user interface (PHP/HTML/javascript).
+
+
+
+\bibliographystyle{plain}
+\bibliography{thesis-ideas}
+
+
+\end{document}

@@ -1,0 +1,14 @@
+\rm  chris-all-published-bibs-J.bib
+\rm  chris-all-published-bibs-C.bib
+\rm  chris-all-published-bibs-W.bib
+\rm  chris-all-published-bibs-T.bib
+\rm  chris-all-published-bibs-R.bib
+\rm chris-all-published-bibs.bib
+
+find . -name "J*.bib" -exec cat {} > chris-all-published-bibs-J.bib \;
+find . -name "C*.bib" -exec cat {} > chris-all-published-bibs-C.bib \;
+find . -name "W*.bib" -exec cat {} > chris-all-published-bibs-W.bib \;
+find . -name "T*.bib" -exec cat {} > chris-all-published-bibs-T.bib \;
+find . -name "R*.bib" -exec cat {} > chris-all-published-bibs-R.bib \;
+cat chris-all-published-bibs-J.bib chris-all-published-bibs-C.bib chris-all-published-bibs-W.bib chris-all-published-bibs-T.bib chris-all-published-bibs-R.bib > chris-all-published-bibs.bib
+

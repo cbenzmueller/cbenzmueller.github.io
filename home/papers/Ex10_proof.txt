@@ -1,0 +1,141 @@
+%**** Beginning of derivation protocol in tstp ****
+% SZS output start CNFRefutation
+  thf(tp_bill,type,(bill: mu)).
+  thf(tp_chris,type,(chris: ($i>($i>$o)))).
+  thf(tp_cw,type,(cw: $i)).
+  thf(tp_likes,type,(likes: (mu>(mu>($i>$o))))).
+  thf(tp_mand,type,(mand: (($i>$o)>(($i>$o)>($i>$o))))).
+  thf(tp_mary,type,(mary: mu)).
+  thf(tp_mbox,type,(mbox: (($i>($i>$o))>(($i>$o)>($i>$o))))).
+  thf(tp_mcountersatisfiable,type,(mcountersatisfiable: (($i>$o)>$o))).
+  thf(tp_mdia,type,(mdia: (($i>($i>$o))>(($i>$o)>($i>$o))))).
+  thf(tp_meq_ind,type,(meq_ind: (mu>(mu>($i>$o))))).
+  thf(tp_meq_prop,type,(meq_prop: (($i>$o)>(($i>$o)>($i>$o))))).
+  thf(tp_mequiv,type,(mequiv: (($i>$o)>(($i>$o)>($i>$o))))).
+  thf(tp_meuclidean,type,(meuclidean: (($i>($i>$o))>$o))).
+  thf(tp_mexists_ind,type,(mexists_ind: ((mu>($i>$o))>($i>$o)))).
+  thf(tp_mexists_prop,type,(mexists_prop: ((($i>$o)>($i>$o))>($i>$o)))).
+  thf(tp_mfalse,type,(mfalse: ($i>$o))).
+  thf(tp_mforall_ind,type,(mforall_ind: ((mu>($i>$o))>($i>$o)))).
+  thf(tp_mforall_prop,type,(mforall_prop: ((($i>$o)>($i>$o))>($i>$o)))).
+  thf(tp_mfunctional,type,(mfunctional: (($i>($i>$o))>$o))).
+  thf(tp_mimplied,type,(mimplied: (($i>$o)>(($i>$o)>($i>$o))))).
+  thf(tp_mimplies,type,(mimplies: (($i>$o)>(($i>$o)>($i>$o))))).
+  thf(tp_minvalid,type,(minvalid: (($i>$o)>$o))).
+  thf(tp_mnot,type,(mnot: (($i>$o)>($i>$o)))).
+  thf(tp_mor,type,(mor: (($i>$o)>(($i>$o)>($i>$o))))).
+  thf(tp_mpartionally_functional,type,(mpartionally_functional: (($i>($i>$o))>$o))).
+  thf(tp_mreflexive,type,(mreflexive: (($i>($i>$o))>$o))).
+  thf(tp_msatisfiable,type,(msatisfiable: (($i>$o)>$o))).
+  thf(tp_mserial,type,(mserial: (($i>($i>$o))>$o))).
+  thf(tp_msymmetric,type,(msymmetric: (($i>($i>$o))>$o))).
+  thf(tp_mtransitive,type,(mtransitive: (($i>($i>$o))>$o))).
+  thf(tp_mtrue,type,(mtrue: ($i>$o))).
+  thf(tp_mu,type,(mu: tType)).
+  thf(tp_mvalid,type,(mvalid: (($i>$o)>$o))).
+  thf(tp_mweakly_connected,type,(mweakly_connected: (($i>($i>$o))>$o))).
+  thf(tp_mweakly_dense,type,(mweakly_dense: (($i>($i>$o))>$o))).
+  thf(tp_mweakly_directed,type,(mweakly_directed: (($i>($i>$o))>$o))).
+  thf(tp_mxor,type,(mxor: (($i>$o)>(($i>$o)>($i>$o))))).
+  thf(tp_sK1,type,(sK1: $i)).
+  thf(tp_sK2,type,(sK2: ($i>(($i>$o)>($i>$i))))).
+  thf(tp_sK3,type,(sK3: (($i>$o)>($i>$i)))).
+  thf(tp_sK4,type,(sK4: (($i>$o)>($i>$i)))).
+  thf(tp_sue,type,(sue: mu)).thf(mand_def,definition,(mand = (^[Phi:($i>$o),Psi:($i>$o)]: (mnot@((mor@(mnot@Phi))@(mnot@Psi)))))).
+
+thf(mbox_def,definition,(mbox = (^[R:($i>($i>$o)),Phi:($i>$o),W:$i]: (![V:$i]: ((~ ((R@W)@V)) | (Phi@V)))))).
+
+thf(mcountersatisfiable_def,definition,(mcountersatisfiable = (^[Phi:($i>$o)]: (?[W:$i]: (~ (Phi@W)))))).
+
+thf(mdia_def,definition,(mdia = (^[R:($i>($i>$o)),Phi:($i>$o)]: (mnot@((mbox@R)@(mnot@Phi)))))).
+
+thf(meq_ind_def,definition,(meq_ind = (^[X:mu,Y:mu,W:$i]: (X = Y)))).
+
+thf(meq_prop_def,definition,(meq_prop = (^[X:($i>$o),Y:($i>$o),W:$i]: ((X@W) = (Y@W))))).
+
+thf(mequiv_def,definition,(mequiv = (^[Phi:($i>$o),Psi:($i>$o)]: ((mand@((mimplies@Phi)@Psi))@((mimplies@Psi)@Phi))))).
+
+thf(meuclidean_def,definition,(meuclidean = (^[R:($i>($i>$o))]: (![S:$i,T:$i,U:$i]: ((((R@S)@T) & ((R@S)@U)) => ((R@T)@U)))))).
+
+thf(mexists_ind_def,definition,(mexists_ind = (^[Phi:(mu>($i>$o))]: (mnot@(mforall_ind@(^[X:mu]: (mnot@(Phi@X)))))))).
+
+thf(mexists_prop_def,definition,(mexists_prop = (^[Phi:(($i>$o)>($i>$o))]: (mnot@(mforall_prop@(^[P:($i>$o)]: (mnot@(Phi@P)))))))).
+
+thf(mfalse_def,definition,(mfalse = (mnot@mtrue))).
+
+thf(mforall_ind_def,definition,(mforall_ind = (^[Phi:(mu>($i>$o)),W:$i]: (![X:mu]: ((Phi@X)@W))))).
+
+thf(mforall_prop_def,definition,(mforall_prop = (^[Phi:(($i>$o)>($i>$o)),W:$i]: (![P:($i>$o)]: ((Phi@P)@W))))).
+
+thf(mfunctional_def,definition,(mfunctional = (^[R:($i>($i>$o))]: (![S:$i]: (?[T:$i]: (((R@S)@T) & (![U:$i]: (((R@S)@U) => (T = U))))))))).
+
+thf(mimplied_def,definition,(mimplied = (^[Phi:($i>$o),Psi:($i>$o)]: ((mor@(mnot@Psi))@Phi)))).
+
+thf(mimplies_def,definition,(mimplies = (^[Phi:($i>$o),Psi:($i>$o)]: ((mor@(mnot@Phi))@Psi)))).
+
+thf(minvalid_def,definition,(minvalid = (^[Phi:($i>$o)]: (![W:$i]: (~ (Phi@W)))))).
+
+thf(mnot_def,definition,(mnot = (^[Phi:($i>$o),W:$i]: (~ (Phi@W))))).
+
+thf(mor_def,definition,(mor = (^[Phi:($i>$o),Psi:($i>$o),W:$i]: ((Phi@W) | (Psi@W))))).
+
+thf(mpartially_functional_def,definition,(mpartially_functional = (^[R:($i>($i>$o))]: (![S:$i,T:$i,U:$i]: ((((R@S)@T) & ((R@S)@U)) => (T = U)))))).
+
+thf(mreflexive_def,definition,(mreflexive = (^[R:($i>($i>$o))]: (![S:$i]: ((R@S)@S))))).
+
+thf(msatisfiable_def,definition,(msatisfiable = (^[Phi:($i>$o)]: (?[W:$i]: (Phi@W))))).
+
+thf(mserial_def,definition,(mserial = (^[R:($i>($i>$o))]: (![S:$i]: (?[T:$i]: ((R@S)@T)))))).
+
+thf(msymmetric_def,definition,(msymmetric = (^[R:($i>($i>$o))]: (![S:$i,T:$i]: (((R@S)@T) => ((R@T)@S)))))).
+
+thf(mtransitive_def,definition,(mtransitive = (^[R:($i>($i>$o))]: (![S:$i,T:$i,U:$i]: ((((R@S)@T) & ((R@T)@U)) => ((R@S)@U)))))).
+
+thf(mtrue_def,definition,(mtrue = (^[W:$i]: $true))).
+
+thf(mvalid_def,definition,(mvalid = (^[Phi:($i>$o)]: (![W:$i]: (Phi@W))))).
+
+thf(mweakly_connected_def,definition,(mweakly_connected = (^[R:($i>($i>$o))]: (![S:$i,T:$i,U:$i]: ((((R@S)@T) & ((R@S)@U)) => ((((R@T)@U) | (T = U)) | ((R@U)@T))))))).
+
+thf(mweakly_dense_def,definition,(mweakly_dense = (^[R:($i>($i>$o))]: (![S:$i,T:$i,U:$i]: (((R@S)@T) => (?[U:$i]: (((R@S)@U) & ((R@U)@T)))))))).
+
+thf(mweakly_directed_def,definition,(mweakly_directed = (^[R:($i>($i>$o))]: (![S:$i,T:$i,U:$i]: ((((R@S)@T) & ((R@S)@U)) => (?[V:$i]: (((R@T)@V) & ((R@U)@V)))))))).
+
+thf(mxor_def,definition,(mxor = (^[Phi:($i>$o),Psi:($i>$o)]: (mnot@((mequiv@Phi)@Psi))))).
+
+
+ thf(1,axiom,(((mbox@chris)@(mforall_ind@(^[X:mu]: ((mimplies@((likes@mary)@X))@((likes@sue)@X)))))@cw),file('Ex12.thf',axiom_P3)).
+ thf(2,axiom,(((mbox@chris)@((likes@mary)@bill))@cw),file('Ex12.thf',axiom_P2)).
+ thf(6,conjecture,(((mbox@chris)@((likes@sue)@bill))@cw),file('Ex12.thf',conj)).
+ thf(7,negated_conjecture,(((((mbox@chris)@((likes@sue)@bill))@cw)=$false)),inference(negate_conjecture,[status(cth)],[6])).
+ thf(8,plain,(((![SY5:$i]: ((~ ((chris@cw)@SY5)) | (((likes@sue)@bill)@SY5)))=$false)),inference(unfold_def,[status(thm)],[7,mand,mbox,mcountersatisfiable,mdia,meq_ind,meq_prop,mequiv,meuclidean,mexists_ind,mexists_prop,mfalse,mforall_ind,mforall_prop,mfunctional,mimplied,mimplies,minvalid,mnot,mor,mpartially_functional,mreflexive,msatisfiable,mserial,msymmetric,mtransitive,mtrue,mvalid,mweakly_connected,mweakly_dense,mweakly_directed,mxor])).
+ thf(9,plain,(((![SY23:$i]: ((~ ((chris@cw)@SY23)) | (![SY22:mu]: ((~ (((likes@mary)@SY22)@SY23)) | (((likes@sue)@SY22)@SY23)))))=$true)),inference(unfold_def,[status(thm)],[1,mand,mbox,mcountersatisfiable,mdia,meq_ind,meq_prop,mequiv,meuclidean,mexists_ind,mexists_prop,mfalse,mforall_ind,mforall_prop,mfunctional,mimplied,mimplies,minvalid,mnot,mor,mpartially_functional,mreflexive,msatisfiable,mserial,msymmetric,mtransitive,mtrue,mvalid,mweakly_connected,mweakly_dense,mweakly_directed,mxor])).
+ thf(11,plain,(((![SY83:$i]: ((~ ((chris@cw)@SY83)) | (((likes@mary)@bill)@SY83)))=$true)),inference(unfold_def,[status(thm)],[2,mand,mbox,mcountersatisfiable,mdia,meq_ind,meq_prop,mequiv,meuclidean,mexists_ind,mexists_prop,mfalse,mforall_ind,mforall_prop,mfunctional,mimplied,mimplies,minvalid,mnot,mor,mpartially_functional,mreflexive,msatisfiable,mserial,msymmetric,mtransitive,mtrue,mvalid,mweakly_connected,mweakly_dense,mweakly_directed,mxor])).
+ thf(14,plain,((((~ ((chris@cw)@sK1)) | (((likes@sue)@bill)@sK1))=$false)),inference(extcnf_forall_neg,[status(esa)],[8])).
+ thf(15,plain,(((~ ((~ ((chris@cw)@sK1)) | (((likes@sue)@bill)@sK1)))=$true)),inference(polarity_switch,[status(thm)],[14])).
+ thf(16,plain,(((((chris@cw)@sK1) & (~ (((likes@sue)@bill)@sK1)))=$true)),inference(extcnf_combined,[status(esa)],[15])).
+ thf(22,plain,(((![SY83:$i]: ((~ ((chris@cw)@SY83)) | (((likes@mary)@bill)@SY83)))=$true)),inference(copy,[status(thm)],[11])).
+ thf(24,plain,(((![SY23:$i]: ((~ ((chris@cw)@SY23)) | (![SY22:mu]: ((~ (((likes@mary)@SY22)@SY23)) | (((likes@sue)@SY22)@SY23)))))=$true)),inference(copy,[status(thm)],[9])).
+ thf(25,plain,(((((chris@cw)@sK1) & (~ (((likes@sue)@bill)@sK1)))=$true)),inference(copy,[status(thm)],[16])).
+ thf(26,plain,(((~ ((~ ((chris@cw)@sK1)) | (~ (~ (((likes@sue)@bill)@sK1)))))=$true)),inference(unfold_def,[status(thm)],[25,mand,mbox,mcountersatisfiable,mdia,meq_ind,meq_prop,mequiv,meuclidean,mexists_ind,mexists_prop,mfalse,mforall_ind,mforall_prop,mfunctional,mimplied,mimplies,minvalid,mnot,mor,mpartially_functional,mreflexive,msatisfiable,mserial,msymmetric,mtransitive,mtrue,mvalid,mweakly_connected,mweakly_dense,mweakly_directed,mxor])).
+ thf(30,plain,(![SV2:$i]: ((((~ ((chris@cw)@SV2)) | (((likes@mary)@bill)@SV2))=$true))),inference(extcnf_forall_pos,[status(thm)],[22])).
+ thf(31,plain,(![SV3:$i]: ((((~ ((chris@cw)@SV3)) | (![SY122:mu]: ((~ (((likes@mary)@SY122)@SV3)) | (((likes@sue)@SY122)@SV3))))=$true))),inference(extcnf_forall_pos,[status(thm)],[24])).
+ thf(32,plain,((((~ ((chris@cw)@sK1)) | (~ (~ (((likes@sue)@bill)@sK1))))=$false)),inference(extcnf_not_pos,[status(thm)],[26])).
+ thf(36,plain,(![SV2:$i]: (((~ ((chris@cw)@SV2))=$true) | ((((likes@mary)@bill)@SV2)=$true))),inference(extcnf_or_pos,[status(thm)],[30])).
+ thf(37,plain,(![SV3:$i]: (((~ ((chris@cw)@SV3))=$true) | ((![SY122:mu]: ((~ (((likes@mary)@SY122)@SV3)) | (((likes@sue)@SY122)@SV3)))=$true))),inference(extcnf_or_pos,[status(thm)],[31])).
+ thf(38,plain,(((~ ((chris@cw)@sK1))=$false)),inference(extcnf_or_neg,[status(thm)],[32])).
+ thf(39,plain,(((~ (~ (((likes@sue)@bill)@sK1)))=$false)),inference(extcnf_or_neg,[status(thm)],[32])).
+ thf(42,plain,(![SV2:$i]: ((((chris@cw)@SV2)=$false) | ((((likes@mary)@bill)@SV2)=$true))),inference(extcnf_not_pos,[status(thm)],[36])).
+ thf(43,plain,(![SV3:$i,SV9:mu]: ((((~ (((likes@mary)@SV9)@SV3)) | (((likes@sue)@SV9)@SV3))=$true) | ((~ ((chris@cw)@SV3))=$true))),inference(extcnf_forall_pos,[status(thm)],[37])).
+ thf(44,plain,((((chris@cw)@sK1)=$true)),inference(extcnf_not_neg,[status(thm)],[38])).
+ thf(45,plain,(((~ (((likes@sue)@bill)@sK1))=$true)),inference(extcnf_not_neg,[status(thm)],[39])).
+ thf(48,plain,(![SV9:mu,SV3:$i]: ((((chris@cw)@SV3)=$false) | (((~ (((likes@mary)@SV9)@SV3)) | (((likes@sue)@SV9)@SV3))=$true))),inference(extcnf_not_pos,[status(thm)],[43])).
+ thf(49,plain,(((((likes@sue)@bill)@sK1)=$false)),inference(extcnf_not_pos,[status(thm)],[45])).
+ thf(52,plain,(![SV3:$i,SV9:mu]: (((~ (((likes@mary)@SV9)@SV3))=$true) | ((((likes@sue)@SV9)@SV3)=$true) | (((chris@cw)@SV3)=$false))),inference(extcnf_or_pos,[status(thm)],[48])).
+ thf(56,plain,(![SV3:$i,SV9:mu]: (((((likes@mary)@SV9)@SV3)=$false) | (((chris@cw)@SV3)=$false) | ((((likes@sue)@SV9)@SV3)=$true))),inference(extcnf_not_pos,[status(thm)],[52])).
+ thf(76,plain,((($false)=$true)),inference(fo_atp_e,[status(thm)],[42,49,56,44])).
+ thf(77,plain,($false),inference(solved_all_splits,[solved_all_splits(join,[])],[76])).
+% SZS output end CNFRefutation
+
+%**** End of derivation protocol in tstp ****
+%**** no. of clauses in derivation: 31 ****

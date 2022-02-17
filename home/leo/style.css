@@ -1,0 +1,138 @@
+body {
+  background-color: #999999;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+  font-size: 62.5%; /* Resets 1em to 10px */
+  font-family: Verdana, Arial, Sans-Serif;
+  text-align: left;
+}
+
+a {
+  color: #367898;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#superpage {
+  padding: 0;
+  margin: 0 auto;
+  border: 0;
+  width: 760px;
+  background: url(bg.gif) repeat-y top left #999999;
+}
+
+#page {
+  width: 750px;
+  position: relative;
+  left: 5px;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+#header {
+  padding: 0;
+  margin: 0;
+  height: 150px;
+  background: url(header-new2.jpg) top left;
+}
+
+#menubar {
+  padding: 0;
+  margin: 0;
+  height: 38px;
+  width: 100%;
+  background: url(menubg.gif) repeat-x;
+}
+
+#menubar a {
+  font-family: "Trebuchet MS", Verdana, Arial, Sans-Serif;
+  color: #367898;
+  font-size: 1.4em;
+  text-decoration: none;
+  display: block;
+  float: left;
+  padding: 10px 15px 0px 15px;
+  border-right: 1px #C5D5DC solid;
+  text-align: center;
+  height: 28px;
+}
+
+#menubar #selected {
+  font-family: "Trebuchet MS", Verdana, Arial, Sans-Serif;
+  color: #ffffff;
+  font-size: 1.4em;
+  text-decoration: none;
+  display: block;
+  float: left;
+  padding: 10px 15px 0px 15px;
+  border-right: 1px #C5D5DC solid;
+  text-align: center;
+  height: 28px;
+  background: url(menubg_sel.gif) repeat-x;
+}
+
+#menubar a:hover {
+  color: #ffffff;
+  background: url(menubg_sel.gif) repeat-x;
+}
+
+#content {
+  border: 0;
+  padding: 20px 30px 20px 40px;
+  margin: 0;
+  width: 680px;
+  background: url(contentbg.gif) repeat-x #ffffff;
+}
+
+#footer {
+  background-color: #ffffff;
+  text-align: right;
+  padding: 10px;
+  font-size: 1em;
+  color: #999999;
+}
+
+h1, h2, h3 {
+  font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 4em;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.8em;
+}
+
+h3 {
+  font-size: 1.3em;
+}
+
+#content {
+  font-size: 1.2em;
+}
+
+
+#bottomshadow {
+  padding: 0;
+  margin: 0;
+  height: 5px;
+  width: 100%;
+  background: url(bottomshadow.gif);
+}
+
+li {
+  margin: 0px 0px 10px -10px;
+}
+
+pre {
+  font: 115% monospace;
+  font-size: 1.3em;
+}

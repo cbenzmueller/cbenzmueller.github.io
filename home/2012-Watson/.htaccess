@@ -1,0 +1,7 @@
+AuthUserFile /web/page.mi.fu-berlin.de/web-home/cbenzmueller/passwd/.htpasswd
+AuthGroupFile /dev/null
+AuthName "Restricted Access" 
+AuthType Basic
+<Limit GET>
+require user student
+</Limit>

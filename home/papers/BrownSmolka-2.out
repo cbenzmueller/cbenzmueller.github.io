@@ -1,0 +1,42 @@
+% SZS output start CNFRefutation
+ thf(1,axiom,(~ ((h@(f@(f@(f@x)))) = (h@(f@x)))),file('BrownSmolka-2.thf',ax)).
+ thf(5,plain,(((~ ((h@(f@(f@(f@x)))) = (h@(f@x))))=$true)),inference(copy,[status(thm)],[1])).
+ thf(7,plain,((((h@(f@(f@(f@x)))) = (h@(f@x)))=$false)),inference(extcnf,[status(thm)],[5])).
+ thf(9,plain,(((f@(f@(f@x)))=$false) | ((f@x)=$false)),inference(ext_uni,[status(thm)],[7])).
+ thf(10,plain,(((f@(f@(f@x)))=$true) | ((f@x)=$true)),inference(ext_uni,[status(thm)],[7])).
+ thf(11,plain,(((f@(f@x))=$false) | ((x)=$false)),inference(ext_uni,[status(thm)],[7])).
+ thf(12,plain,(((f@(f@x))=$true) | ((x)=$true)),inference(ext_uni,[status(thm)],[7])).
+ thf(56,plain,((((f@(f@x)) = (f@(f@(f@x))))=$false) | ((x)=$false) | ((f@x)=$true)),inference(res,[status(thm)],[11,10])).
+ thf(58,plain,((((f@(f@x)) = (f@x))=$false) | ((x)=$false) | ((f@(f@(f@x)))=$true)),inference(res,[status(thm)],[11,10])).
+ thf(65,plain,(((f@x)=$false) | ((x)=$false) | ((f@(f@(f@x)))=$true) | ((x)=$false)),inference(ext_uni,[status(thm)],[58])).
+ thf(72,plain,(((f@x)=$true) | ((f@(f@x))=$true) | ((f@x)=$true) | ((x)=$false)),inference(ext_uni,[status(thm)],[56])).
+ thf(77,plain,(((x)=$false) | ((f@x)=$false) | ((f@(f@(f@x)))=$true)),inference(sim,[status(thm)],[65])).
+ thf(78,plain,(((x)=$false) | ((f@x)=$true) | ((f@(f@x))=$true)),inference(sim,[status(thm)],[72])).
+ thf(84,plain,((((f@(f@x)) = (f@(f@(f@x))))=$false) | ((x)=$true) | ((f@x)=$false)),inference(res,[status(thm)],[12,9])).
+ thf(86,plain,((((f@(f@x)) = (f@x))=$false) | ((x)=$true) | ((f@(f@(f@x)))=$false)),inference(res,[status(thm)],[12,9])).
+ thf(100,plain,(((f@x)=$true) | ((x)=$true) | ((f@(f@(f@x)))=$false) | ((x)=$true)),inference(ext_uni,[status(thm)],[86])).
+ thf(105,plain,(((f@x)=$false) | ((f@(f@x))=$false) | ((f@x)=$false) | ((x)=$true)),inference(ext_uni,[status(thm)],[84])).
+ thf(117,plain,(((x)=$true) | ((f@x)=$true) | ((f@(f@(f@x)))=$false)),inference(sim,[status(thm)],[100])).
+ thf(118,plain,(((x)=$true) | ((f@x)=$false) | ((f@(f@x))=$false)),inference(sim,[status(thm)],[105])).
+ thf(247,plain,((((f@(f@(f@x))) = (f@(f@(f@x))))=$false) | ((x)=$false) | ((f@x)=$false) | ((f@x)=$false)),inference(res,[status(thm)],[77,9])).
+ thf(256,plain,(((f@x)=$false) | ((f@x)=$false) | ((x)=$false)),inference(ext_uni,[status(thm)],[247])).
+ thf(324,plain,(((x)=$false) | ((f@x)=$false)),inference(sim,[status(thm)],[256])).
+ thf(353,plain,((((f@(f@x)) = (f@(f@x)))=$false) | ((x)=$false) | ((f@x)=$true) | ((x)=$false)),inference(res,[status(thm)],[78,11])).
+ thf(396,plain,(((f@x)=$true) | ((x)=$false) | ((x)=$false)),inference(ext_uni,[status(thm)],[353])).
+ thf(481,plain,(((x)=$false) | ((f@x)=$true)),inference(sim,[status(thm)],[396])).
+ thf(512,plain,((((f@(f@(f@x))) = (f@(f@(f@x))))=$false) | ((x)=$true) | ((f@x)=$true) | ((f@x)=$true)),inference(res,[status(thm)],[117,10])).
+ thf(537,plain,(((f@x)=$true) | ((f@x)=$true) | ((x)=$true)),inference(ext_uni,[status(thm)],[512])).
+ thf(647,plain,(((x)=$true) | ((f@x)=$true)),inference(sim,[status(thm)],[537])).
+ thf(681,plain,((((f@(f@x)) = (f@(f@x)))=$false) | ((x)=$true) | ((f@x)=$false) | ((x)=$true)),inference(res,[status(thm)],[118,12])).
+ thf(726,plain,(((f@x)=$false) | ((x)=$true) | ((x)=$true)),inference(ext_uni,[status(thm)],[681])).
+ thf(807,plain,(((x)=$true) | ((f@x)=$false)),inference(sim,[status(thm)],[726])).
+ thf(2280,plain,(((x = x)=$false) | ((f@x)=$true) | ((f@x)=$true)),inference(res,[status(thm)],[647,481])).
+ thf(2366,plain,(((f@x)=$true) | ((f@x)=$true)),inference(ext_uni,[status(thm)],[2280])).
+ thf(2455,plain,(((f@x)=$true)),inference(sim,[status(thm)],[2366])).
+ thf(2967,plain,(((x = x)=$false) | ((f@x)=$false) | ((f@x)=$false)),inference(res,[status(thm)],[807,324])).
+ thf(3013,plain,(((f@x)=$false) | ((f@x)=$false)),inference(ext_uni,[status(thm)],[2967])).
+ thf(3104,plain,(((f@x)=$false)),inference(sim,[status(thm)],[3013])).
+ thf(5641,plain,((((f@x) = (f@x))=$false)),inference(res,[status(thm)],[3104,2455])).
+ thf(5671,plain,((($false)=$true)),inference(ext_uni,[status(thm)],[5641])).
+ thf(5672,plain,($false),inference(solved_all_splitted_problems,[status(thm)],[5671])).
+% SZS output end CNFRefutation

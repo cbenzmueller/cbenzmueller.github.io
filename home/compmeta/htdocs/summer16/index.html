@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Computational Metaphysics">
+    <meta name="keywords" content="Christoph Benzmüller, Max Wisniewski, Alexander Steen, Freie Universität Berlin, Computer Science, Logics, Higher-Order Logic, Leo-III, Theorem Proving, Computational Metaphysics">
+    <title>Computational Metaphysics</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+   <div id="header">
+    <div class="container">
+      <div class="col-md-5">
+        Lecture + Tutorial in Summer 2016
+        <h1><a href="index.html" style="color:black">Computational Metaphysics</a></h1>
+        <address>
+          <a class="external" href="http://www.fu-berlin.de">Freie Universität Berlin</a> <br>
+          <a class="external" href="http://www.mi.fu-berlin.de">Department of Mathematics and Computer Science</a> <br>
+          <a class="external" href="http://www.inf.fu-berlin.de">Institute for Computer Science</a>
+        </address>
+      </div>
+      <div class="col-md-3">
+        <div style="margin-top:1em"><span class="sc">Contact information</span> <br>
+        
+        Christoph Benzmüller <a href="mailto:c.benzmueller@fu-berlin.de" role="button" class="btn btn-default btn-xs" aria-label="E-Mail">
+  <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+</a><br>
+        Alexander Steen <a href="mailto:a.steen@fu-berlin.de" role="button" class="btn btn-default btn-xs" aria-label="E-Mail">
+  <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+</a><br>
+        Max Wisniewski <a href="mailto:m.wisniewski@fu-berlin.de" role="button" class="btn btn-default btn-xs" aria-label="E-Mail">
+  <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+</a><br>
+        <br>
+        </div>
+      </div>
+      <div class="col-md-4">
+      <img src="imageMetaPhysik.png" style="max-height:20em" class="img-responsive center-block">
+      </div>
+     </div>
+     </div>
+          
+
+     
+     <div class="container" style="background-color:white">
+     <div class="row">
+      <div class="col-sm-12">
+        <h2>General information</h2>
+        <section>
+          <dl>
+            <dt>Time</dt>
+            <dd>April 18 - July 23, 2016, first lecture on tuesday, April 19</dd>
+            <dt>Dates</dt>
+            <dd>Lectures on tuesday (16-18), irregular additional lecture dates on thursday (16-18),
+            tutorial sessions on wednesday (14-16)</dd>
+            <dt>Rooms (1)</dt>
+            <dd>Lectures: At Takustr. 9 ("Institut für Informatik"), room SR006 (seminar room, ground level -- also called T9/SR006).<br>
+            <em>Please look at the <a href="index.html#lectures">lecture schedule</a> below for the exact rooms on each day!</em></dd>
+            <dt>Rooms (2)</dt>
+            <dd>Tutorials: At Takustr. 9 ("Institut für Informatik"), rooms K38 and K48 (basement)</dd>
+            <dt>Target audience</dt>
+            <dd>Advanced students of philosophy (within the '<em>Interdisziplinären Studienbereich</em>'),
+                computer science (module '<em>Spezielle Aspekte der praktischen Informatik</em>'
+                and '<em>Spezielle Aspekte der theoretischen Informatik</em>'),
+                and mathematics (module '<em>Ausgewählte Forschungsthemen</em>')</dd>
+            <dt>Entry at course catalouge</dt>
+            <dd><a href="http://www.fu-berlin.de/vv/de/lv/288519?sm=231509" class="external">
+            VV Entry</a>
+            <dt>Mailing list</dt>
+            <dd><a href="https://lists.fu-berlin.de/listinfo/CompMeta" class="external">CompMeta@lists.fu-berlin.de</a> (<b>Please subscribe to the mailing list</b>: Important announcements will be published there.)</dd>
+          </dl>
+          <p>The module is designed for approx. 30 students.</p>
+        </section>
+      </div>
+     </div>
+     
+     <div class="row">
+      <div class="col-sm-12">
+        <h2>News</h2>
+        <section>
+          <p><b>12.07.16</b>: <b>Due to spontaneous construction work at SR006
+          we have to move our invited lecture on July 12th to the lecture hall</b>.</p>
+          <p><b>21.06.16</b>: The group work topic proposals have been added to the KVV system. Please prepare for the tutorial session on Wednesday, June 22nd, since we are assigned group work topics during the session. Also, the examination and group work guidelines are available at the KVV system.</p>
+          <p><b>15.06.16</b>: The <b><a href="boolos.html">1st International Grand Boolos Award</a></b> has been awarded to the proud winners during the tutorial sessions! Congratulations!</p>
+          <p><b>15.06.16</b>: The last assignment sheet in online. See <a href="#assignments">assignments</a> section.</p>
+          <!--<p><b>25.05.16</b>: The sixth assignment sheet in online. See <a href="#assignments">assignments</a> section.</p>-->
+          <!--<p><b>17.05.16</b>: The fifth assignment sheet in online. See <a href="#assignments">assignments</a> section.</p>-->
+          <!--<p><b>10.05.16</b>: The fourth assignment sheet in online. See <a href="#assignments">assignments</a> section.</p>-->
+          <!--<p><b>03.05.16</b>: The third assignment sheet in online. See <a href="#assignments">assignments</a> section.</p>-->
+          <p><b>26.04.16</b>: The today's lecture and the lecture on thursday, April 28th, will take place at the great lecture hall (T9/HS großer Hörsaal).</p>
+          <p><b>21.04.16</b>: The today's lecture will take place at the great lecture hall (T9/HS großer Hörsaal).</p>
+          <!--<p><b>19.04.16</b>: The first assignment sheet in online. See <a href="#assignments">assignments</a> section.</p>-->
+          <p><b>22.03.16</b>: Due to room booking conflics, <b>the lecture will now take place at the institute of computer science</b>
+          (Takustr. 9),mainly at seminar room SR006, please look at the <a href="index.html#lectures">detailed lecture schedule</a> (below) for per-lecture room information.</p>
+          <p><b>15.02.16</b>: A lot of literature resources have been added to this web site.</p>
+        </section>
+      </div>
+     </div>
+     
+     <div class="row">
+      <div class="col-sm-12">
+        <h2>Lecture description</h2>
+        <section>
+          <h3>English</h3>
+          <p>Formal logic (and formal reasoning) constitutes an substantial role in philosophy, mathematics and computer science. Topics such as basic reasoning in propositional and (first-order) predicate logic are often dealt with in early lecture of the aforementioned study programs. Unfortunately, other core topics are often omitted.
+This lecture addresses different advanced logic systems that are employed within modern studies in (theoretical) philosophy, mathematics and computer science. In conjunction therewith, a practical introduction to computer-assisted reasoning is given and their application to contemporary problems is demonstrated.
+</p><p>
+In the first part of the lecture we will retrace different variants of
+      the Ontological Argument using computer deduction
+      systems. Subsequently, we investigate the theory of abstract
+      objects (by E.N. Zalta) as a logical foundation of metaphysics as well as means of representation in a computer system. Finally we discuss the interdisciplinary impact of these results and their influence on the young research area of computational metaphysics.
+</p><p>
+In student projects the learned techniques will be applied to similar arguments of metaphysics. Every promising project can be extended (with further supervision, if necessary) towards a publication in the field of logics or logical philosophy.</p>
+          <h3>German</h3>
+          <p>Die Formale Logik ist gleichermaßen beheimatet in der Philosophie, der Mathematik und der Informatik. Mit leicht unterschiedlicher Ausprägung ist sie in all diesen Disziplinen sowohl auf Anfänger- als auch auf Fortgeschrittenen-Niveau in Lehrveranstaltungen der jeweiligen Studiengänge vertreten. Kernthemen wie z.B. Aussagen- und Prädikatenlogik oder der Kalkül des natürlichen Schließens werden
+nicht selten mehrfach angesprochen, andere wichtige Themen aus Zeitgründen oft übergangen.</p>
+<p>
+Mit unserer Lehrveranstaltung richten wir uns deshalb gleichzeitig an Studierende der Philosophie, Mathematik und Informatik. Ziel ist es,
+eine fachübergreifende Einführung in verschiedene (theoretische) Logikformalismen mit einer praktisch motivierten Einführung in moderne, computer-basierte Beweisassistenzsysteme zu kombinieren.
+</p><p>
+Zu Beginn werden wir die zentrale Idee der Veranstaltung näher beleuchten, in die theoretischen Grundlagen einführen und die zum praktischen Einsatz vorgesehenen Beweisassistenzsysteme vorstellen. Als einen ersten Höhepunkt werden wir dann Varianten des ontologischen Gottesbeweises mit einem Computersystem selbst nachvollziehen. Anschließend widmen wir uns weiteren relevanten
+Themen, beispielsweise Zalta's Theorie abstrakter Objekte als Grundlage für die Metaphysik, und untersuchen erneut die Formalisierbarkeit am Computer.
+Abschließend soll fachübergreifend die Bedeutung dieser Arbeiten diskutiert werden, insbesondere im Hinblick auf eine computationale Metaphysik und die sich andeutende (und zum Teil bereits nachgewiesene) Möglichkeit der formalen Verifikation von Publikationen in diesem Bereich.
+</p><p>
+In Projektarbeiten sollen die Studierenden versuchen, die erlernten Techniken auf weitere, ähnliche Argumente in der Metaphysik zu übertragen und anzuwenden. Dabei soll aber auch der enge übergeordnete Bezug zu verwandten, aber technisch weitaus komplexeren Arbeiten in der Mathematik (Beweis der Kepler'schen Vermutung) beleuchtet werden. Jede gute Arbeit kann potenziell in einer wissenschaftlichen Publikation münden, für dessen Veröffentlichung die Gruppen weiterführende Betreuung erhalten.
+</p>
+        </section>
+      </div>
+     </div>
+     
+     <style type="text/css">
+      .lectures * td, .lectures * th {
+        padding:0 1em 0 1em;
+        border-top:1px solid black
+      }
+      .lectures * th {
+        background-color: #ededed;
+      }
+     </style>
+     <div class="row">
+      <div class="col-sm-12">
+        <a name="lectures"></a>
+        <h2>Lectures</h2>
+        <section>
+          <table class="lectures">
+            <thead>
+              <tr>
+                <th style="width:15%;">Week</th>
+                <th style="width:auto;">Tuesday dates</th>
+                <th style="width:auto;">Thursday dates</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>19.4.Introduction: Computational Metaphysics
+                    <br><b>(C. Benzmüller)</b>
+                    <br><em>Location: T9/SR006</em></td>
+                <td>21.4. Logic Recap: Propositional, First-order,
+     Higher-order, Classical- and Non-classical logic
+                    <br><b> (C. Benzmüller) </b>
+                    <br><em>Location: <b>T9/HS</b></em></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>26.4 Classical Higher-order Logic (HOL) <br><b> (C. Benzmüller)</b>
+     <br><em>Location: <b>T9/HS</b></em></td>
+                <td>28.4. Interactive Proofs in Isabelle/HOL <br><b> (J. Blanchette, Inria Nancy and MPII Saarbrücken) </b>
+                <br><em>Location: <b>T9/HS</b></em></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>3.5. Automatic Proofs and Models in Isabelle/HOL: Sledgehammer,
+     Nitpick, Leo-II, Satallax and Friends <br><b> (J. Blanchette, Inria Nancy and MPII
+     Saarbrücken) </b>
+     <br><em>Location: T9/SR006</em></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>4-6</td>
+                <td colspan="2" style="text-align:center;"><em>Lecture
+     break with many exercises e.g. on HOL and interactive/automated
+     proofs in Isabelle/HOL </em></td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>31.5. The Ontological Argument and Modal
+     Higher-order Logics<br> <b> (C. Benzmüller) </b>
+     <br><em>Location: T9/SR006</em></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>7.6. Automating Modal Higher-order Logics in HOL:
+     The Logic Embeddings Approach <br><b> (C. Benzmüller) </b>
+     <br><em>Location: T9/SR006</em></td>
+                <td>9.6. Computational Analysis of Gödel's Ontological Argument <br><b> (C. Benzmüller) </b>
+                <br><em>Location: T9/SR006</em></td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td colspan="2" style="text-align:center;"><em>No Lecture this week.</em></td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td>21.6. Computational Analysis of Further Variants of the
+     Ontological Argument <br><b> (B. Woltzenlogel-Paleo, ANU Canberra) </b>
+     <br>Suggested reading: [40]
+     <br><em>Location: T9/SR046</em></td>
+                <td>23.6. Logic Embeddings: Further Topics and Applications ---
+     e.g. free logic, multivalued logic, paraconsistent logic, etc.
+          <br><b> (B. Woltzenlogel-Paleo and C. Benzmüller) </b>
+          <br><em>Location: T9/SR006</em></td>
+              </tr>
+              <tr>
+                <td>11</td>
+                <td>28.6. Axiomatic Metaphysics: Two Applications<br><b> (E.N. Zalta, Stanford) </b>
+                <br>Suggested reading: [27] [28]
+                <br><em>Location: T9/SR006</em></td>
+                <td>30.6. Computational Methods for Axiomatic Metaphysics<br><b> (E.N. Zalta, Stanford) </b>
+                <br>Suggested reading: [26] [25] [29]
+                <br><em>Location: T9/SR006</em></td>
+              </tr>
+              <tr>
+                <td>12</td>
+                <td>5.7. Experiments: <br> (A) The Theory of Abstract
+      Objects in Isabelle/HOL <br> (B) Free Logic (and Axiomatic Category
+      Theory) in HOL <br><b> (C. Benzmüller) </b>
+                <br><em>Location: T9/SR006</em></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>13</td>
+                <td>12.7. Leibniz‘ Ontologischer Beweis der Existenz Gottes <a href="lenzen_abstract.pdf">(Abstract)</a>
+      <br><b> (W. Lenzen, Osnabrück) </b>
+      <br><em>Location: T9/HS (lecture hall)</em></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>14</td>
+                <td>19.7. Final Lecture: Group presentations
+                and final discusion<br>
+                <a href="presentations.pdf">Preliminary talk schedule</a>
+     <br><em>Location: T9/SR006</em></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+     </div> 
+     
+     <div class="row">
+      <div class="col-sm-12">
+        <h2>Tutorial sessions</h2>
+        <section>
+          Tutorial sessions take place every week on wednesday 14-16 at Takustr. 9 (Institut für Informatik) at rooms
+          K38 and K48 (computer pool rooms, basement). 
+          In the tutorial sessions, we will discuss details of the lecture topics, give
+          examples and work on excercises (possibly in groups).
+          
+          <h3>Instructors/Tutors</h3>
+            <h4>Alexander Steen, Max Wisniewski</h4>
+              <p>Instructors for tutorial sessions, assignment organization.</p>
+              <p>E-Mail: <em>a.steen@fu-berlin.de</em>, Website: <a href="http://inf.fu-berlin.de/~lex">inf.fu-berlin.de/~lex</a>
+              // E-Mail: <em>m.wisniewski@fu-berlin.de</em>, Website: <a href="http://inf.fu-berlin.de/~mwisnie">inf.fu-berlin.de/~mwisnie</a></p>
+            <h4>Maximilian Claus, Hans-Jörg Schurr</h4>
+              <p>Tutors for the wednesday tutorial session</p>
+              <p>E-Mail: <em>m.claus@fu-berlin.de</em>
+              // E-Mail: <em>hansjoerg@zedat.fu-berlin.de</em></p>
+          <a name="assignments"></a>
+          <h3>Assignments</h3>
+          <p>Assignments will be given out every week until approx. week 10. Thereafter,
+          there will be group projects until the end of the lecture.
+          Introductory problems are discussed
+          in the tutorial session (on wednesday).</p>
+          <p>Assignment sheets are solved and submitted in pairs of two. Please find
+          yourself a partner for the tutorial assignments.</p>
+          
+          <table class="lectures">
+            <thead>
+              <tr>
+                <th style="width:15%;">No.</th>
+                <th style="width:auto;">Assignment sheet</th>
+                <th style="width:auto;">Hints and comments</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>
+                  <a href="https://git.imp.fu-berlin.de/leo-iii/compmeta_pub/raw/master/exercises/ex1.pdf">[Ex. sheet as PDF]</a>
+                </td>
+                <td>
+                  Due: Tuesday, April 26th, until the end of the lecture
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>
+                  <a href="https://git.imp.fu-berlin.de/leo-iii/compmeta_pub/raw/master/exercises/ex2.pdf">[Ex. sheet as PDF]</a>
+                </td>
+                <td>
+                  Due: Upload until Tuesday, May 3rd, until midnight into the <a href="http://kvv.imp.fu-berlin.de/portal" class="external">KVV system</a>
+                  under 'Excercise sheet 2'. <br>
+                  <b>Additional material:</b>
+                  <ul>
+                    <li> <a href="https://git.imp.fu-berlin.de/leo-iii/compmeta_pub/raw/master/exercises/resources/Example.thy">Example.thy</a></li>
+                    <li> <a href="https://git.imp.fu-berlin.de/leo-iii/compmeta_pub/raw/master/exercises/resources/Hilbert.thy">Hilbert.thy</a></li>
+                    <li> <a href="https://git.imp.fu-berlin.de/leo-iii/compmeta_pub/raw/master/exercises/resources/Isabelle_ND_cheatsheet.pdf">Isabelle ND cheat sheet</a></li>
+                    <li> <a href="https://git.imp.fu-berlin.de/leo-iii/compmeta_pub/raw/master/exercises/resources/isabelle_pdf_short">Short manual on PDF creation in Isabelle (english)</a></li>
+                    <li> <a href="https://git.imp.fu-berlin.de/leo-iii/compmeta_pub/raw/master/exercises/resources/isabelle_pdf_long.pdf">More detailed manual on PDF creation in Isabelle (german)</a></li>
+                    <li> <a href="https://git.imp.fu-berlin.de/leo-iii/compmeta_pub/raw/master/exercises/resources/abbrevs">Abbreviation file for Isabelle</a>, to be placed in <pre>~/.isabelle/Isabelle2016/jedit/</pre></li>
+                    <li> <a href="https://git.imp.fu-berlin.de/leo-iii/compmeta_pub/raw/master/exercises/resources/Modal_Logic_Symbols.bsh">QML Operators GUI  for Isabelle</a>, to be placed in <pre>~/.isabelle/Isabelle2016/jedit/macros/</pre></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>
+                  <a href="https://git.imp.fu-berlin.de/leo-iii/compmeta_pub/raw/master/exercises/ex3.pdf">[Ex. sheet as PDF]</a>
+                </td>
+                <td>
+                  Upload until Tuesday, May 10th, until midnight into the <a href="http://kvv.imp.fu-berlin.de/portal" class="external">KVV system</a>
+                  under 'Excercise sheet 3'.
+                </td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>
+                  <a href="https://git.imp.fu-berlin.de/leo-iii/compmeta_pub/raw/master/exercises/ex4.pdf">[Ex. sheet as PDF]</a>
+                </td>
+                <td>
+                  Upload until Tuesday, May 17th, until midnight into the <a href="http://kvv.imp.fu-berlin.de/portal" class="external">KVV system</a>
+                  under 'Excercise sheet 4'.
+                </td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>
+                  <a href="https://git.imp.fu-berlin.de/leo-iii/compmeta_pub/raw/master/exercises/ex5.pdf">[Ex. sheet as PDF]</a>
+                </td>
+                <td>
+                  Upload until Tuesday, May 24th, until midnight into the <a href="http://kvv.imp.fu-berlin.de/portal" class="external">KVV system</a>
+                  under 'Excercise sheet 5'.<br>
+                  <b>Additional material:</b>
+                  <ul>
+                    <li> <a href="https://git.imp.fu-berlin.de/leo-iii/compmeta_pub/raw/master/exercises/resources/Tutorial5.thy">Tutorial session Theory</a></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>
+                  <a href="https://git.imp.fu-berlin.de/leo-iii/compmeta_pub/raw/master/exercises/ex6.pdf">[Ex. sheet as PDF]</a>
+                </td>
+                <td>
+                  Upload until Tuesday, May 31st, until midnight into the <a href="http://kvv.imp.fu-berlin.de/portal" class="external">KVV system</a>
+                  under 'Excercise sheet 6'.<br>
+                  <b>Additional material:</b>
+                  <ul>
+                   <li><a href="http://page.mi.fu-berlin.de/cbenzmueller/2016-SFO/Isabelle/QML.thy">QML theory</a>, to be placed in the same directory where your current .thy file is (the one on which you are working).</li>
+                   <li> <a href="https://git.imp.fu-berlin.de/leo-iii/compmeta_pub/raw/master/exercises/resources/abbrevs">Abbreviation file for Isabelle</a>, to be placed in <pre>~/.isabelle/Isabelle2016/jedit/</pre></li>
+                    <li> <a href="https://git.imp.fu-berlin.de/leo-iii/compmeta_pub/raw/master/exercises/resources/Modal_Logic_Symbols.bsh">QML Operators GUI  for Isabelle</a>, to be placed in <pre>~/.isabelle/Isabelle2016/jedit/macros/</pre></li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>
+                  <a href="https://git.imp.fu-berlin.de/leo-iii/compmeta_pub/raw/master/exercises/ex7.pdf">[Ex. sheet as PDF]</a>
+                </td>
+                <td>
+                  Upload until Tuesday, June 7th, until midnight into the <a href="http://kvv.imp.fu-berlin.de/portal" class="external">KVV system</a>
+                  under 'Excercise sheet 7'.
+                </td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>
+                  <a href="https://git.imp.fu-berlin.de/leo-iii/compmeta_pub/raw/master/exercises/ex8.pdf">[Ex. sheet as PDF]</a>
+                </td>
+                <td>
+                  Upload the relevant parts until Tuesday, June 14th, until midnight into the <a href="http://kvv.imp.fu-berlin.de/portal" class="external">KVV system</a>
+                  under 'Excercise sheet 8', the rest may be handed in at our office (Arnimalle 7, room 113).
+                </td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>
+                  <a href="https://git.imp.fu-berlin.de/leo-iii/compmeta_pub/raw/master/exercises/ex9.pdf">[Ex. sheet as PDF]</a>
+                </td>
+                <td>
+                  Upload the relevant parts until Tuesday, June 21st, until midnight into the <a href="http://kvv.imp.fu-berlin.de/portal" class="external">KVV system</a>
+                  under 'Excercise sheet 9'.<br>
+                  <b>Additional material:</b>
+                  <ul>
+                   <li><a href="http://page.mi.fu-berlin.de/cbenzmueller/2016-SFO/Isabelle/QML.thy" class="external">QML theory</a>, to be placed in the same directory where your current .thy file is (the one on which you are working).</li>
+                   <li><a href="http://page.mi.fu-berlin.de/cbenzmueller/2016-SFO/Isabelle/Scott.thy" class="external">Scott.thy</a> -- formalization of Scott's variant of
+                     the Ontological Argument, with modal logic S5 used for the embedding. (<em>To be placed
+                     in the same directory where the QML.thy file is located.</em>)</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>n/a</td>
+                <td  colspan="2">
+                  Thera are no more exercise sheets!
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+     </div> 
+     
+
+     <div class="row">
+      <div class="col-sm-12">
+        <h2>Resources</h2>
+        <section>
+         <h3>Theses topics</h3>
+         <p>
+          There are a lot of interesting topics for bachelor and master theses. Check out
+          <a href="http://page.mi.fu-berlin.de/cbenzmueller/papers/bibtexbrowser.openTheses.php?frameset&bib=openTheses.bib&type=.*" class="external">the proposals</a> and contact us, if you are interested.
+          </p>
+         <h3>Software-related resources</h3>
+           <h4>Isabelle Proof Assistant</h4>
+           <ul>
+              <li><a href="https://isabelle.in.tum.de/"> Website (download)</a></li>
+	            <li><a href="https://isabelle.in.tum.de/documentation.html">Isabelle, Nitpick, Sledgehammer, etc.; Documentations and
+      Tutorials</a></li>
+              <li>Nitpick: A counterexample generator for higher-order logic based on a relational model finder (J.C. Blanchette and T. Nipkow), In Proc. of ITP 2010, number 6172 in LNCS, pages131-146. Springer, 2010.</li>
+              <li>Extending Sledgehammer with SMT solvers (J.C. Blanchette, S. Böhme, and L.C. Paulson), Journal of Automated Reasoning, 51(1):109-128, 2013.</li>
+           </ul>
+           <h4>LEO-II: Automated Theorem Prover for HOL</h4>
+           <ul>
+            <li><a href="http://page.mi.fu-berlin.de/cbenzmueller/leo/">Website (download)</a></li>
+            <li><a href="http://dx.doi.org/10.1007/s10817-015-9348-y">The Higher-Order Prover LEO-II</a>, (C. Benzmüller, N. Sultana, L. Paulson, and F. Theiss). Journal of Automated Reasoning, 2015.</li>
+            <li><a href="http://www.easychair.org/publications/?page=1802176591">LEO-II Version 1.5</a>, (C. Benzmüller, N. Sultana), In PxTP 2013, EasyChair, EPiC Series in Computing, volume 14, pp. 2-10, 2013.</li>
+           </ul>
+           <h4>Satallax: Automated Theorem Prover for HOL</h4>
+           <ul>
+            <li><a href="http://www.ps.uni-saarland.de/~cebrown/satallax/">Website (download)</a></li>
+            <li><a href="">Satallax: An Automatic Higher-Order Prover</a>, (Chad E. Brown), In Proc. of IJCAR 2012, number 7364 in LNAI, pages 111-117. Springer, 2012.</li>
+           </ul>
+         <h3>Literature</h3>
+
+           <h4>Higher-Order Logic</h4>
+           <ol>
+            <li> <a href="http://imps.mcmaster.ca/doc/seven-virtues.pdf">The Seven
+            Virtues of Simple Type Theory</a> (William M. Farmer), Journal of
+            Applied Logic, 6:267-286.</li>
+            <li> <a href="http://plato.stanford.edu/archives/spr2014/entries/type-theory-church/">Church's
+            Type Theory</a> (Peter Andrews), The Stanford Encyclopedia of
+            Philosophy (Spring 2014 Edition), E.N. Zalta (ed.)</li>
+           
+            <li> <a href="http://christoph-benzmueller.de/papers/B5.pdf">Automation of Higher-Order Logic</a>
+          (Christoph Benzm&uumlller, Dale Miller), Chapter in Handbook of the History of Logic,
+          Volume 9 --- Logic and Computation (J&oumlrg Siekmann, Dov Gabbay, John Woods, eds.), Elsevier, 2014. </li>
+
+            <li> <a href="http://christoph-benzmueller.de/papers/B14.pdf">Higher-Order
+            Automated Theorem Provers</a>, (Christoph Benzm&uumlller), In
+            All about Proofs, Proof for All (David Delahaye, Bruno Woltzenlogel Paleo, eds.), College Publications, Mathematical Logic and Foundations, pp. 171-214, 2015.</li>
+            <li>Completeness in the theory of types (L. Henkin), Journal of Symbolic Logic, 15(2):81-91, 1950.</li>
+            <li> <a href="http://christoph-benzmueller.de/papers/J6.pdf">Higher-Order Semantics and Extensionality</a>,
+            (Christoph Benzm&uumlller, Chad Brown, Michael Kohlhase), Journal of
+            Symbolic Logic, 69(4):1027-1088, 2004.</li>
+            <li> <a href="http://christoph-benzmueller.de/papers/J18.pdf">Cut-Simulation and Impredicativity</a>,
+            (Christoph Benzm&uumlller, Chad Brown, Michael Kohlhase), Logical
+            Methods in Computer Science, volume 5, number 1:6, pp. 1-21, 2009.</li>
+          
+            <li> <a href="http://christoph-benzmueller.de/papers/J22.pdf">Automated Reasoning
+          in Higher-Order Logic using the TPTP THF Infrastructure</a>,
+            (Christoph Benzm&uumlller, Geoff Sutcliffe), Journal of Formalized Reasoning, volume 3, number 1, pp. 1-27, 2010.</li>
+            <li> <a href="http://plato.stanford.edu/entries/lambda-calculus/">The Lambda Calculus</a> (J. Alama),
+            Stanford Encyclopedia of Philosophy, 2013.</li> 
+            <li> <a href="http://ttic.uchicago.edu/~dreyer/course/papers/barendregt.pdf">Lambda
+              Calculi with Types</a> (Henk Barendregt), 1993.</li>
+           </ol>
+    
+	   
+	  <h4>Ontological Argument</h4>
+           <ol start="11">
+	   <li>Logic and Theism: Arguments for and Against Beliefs in God (J.H. Sobel),  Cambridge U.Press, 2004.</li>
+           <li>Appx. A: Notes in Kurt Gödel’s Hand (K. Gödel), pages
+           144-145. In Sobel, 2004.</li>
+           <li>Appx. B: Notes in Dana Scott’s Hand (D. Scott), pages
+           145–146. In Sobel, 2004.</li>
+	   <li><a
+           href="http://page.mi.fu-berlin.de/cbenzmueller/papers/Lenzen2016_Leibniz_Ontological_Proof.pdf">Leibniz’s Ontological Proof of the Existence of God 
+and the Problem of "Impossible Objects"</a>
+           (Wolfgang Lenzen), To appear.</li>
+           <li>Some emendations of Gödel’s ontological proof (C.A. Anderson), Faith and Philosophy, 7(3), 1990.</li>
+           <li>Gödel’s ontological proof (J.H. Sobel), In On Being and Saying. Essays for Richard Cartwright, pages 241-261. MIT Press, 1987.</li>
+           <li>Magari and others on Gödel's ontological proof (P. Hájek), In Logic and algebra. A. Ursini and P. Agliano (eds.), Dekker, New York etc.,1996, pp. 125-135.</li>
+           <li>Der Mathematiker und die Frage der Existenz Gottes (P. Hájek), In Kurt Gödel. Wahrheit und Beweisbarkeit. B. Buldt, E. Köhler, M. Stöltzner, P. Weibel, C. Klein, and W. Depauli-Schimanowich-Göttig (eds.), ISBN 3-209- 03835-X. öbv&hpt, Wien, 2001, pp. 325-336.</li>
+           <li>A New Small Emendation of Gödel's Ontological Proof
+           (P. Hájek), Studia Logica 71(2):149-164, 2002.</li>
+	   <li>Types, Tableaux and Gödel’s God (M. Fitting), Kluwer, 2002.</li>
+           <li>Modal collapse in Gödel’s ontological proof (S. Kovác),
+           In Ontological Proofs Today, M. Szatkowski (ed.), Ontos
+           Verlag, 2012.</li>
+           <li>Understanding Gödel's Ontological Argument"
+           (F. Bjørdal), The Logica Yearbook 1998. Ed. by
+	   T. Childers. Filosofia, 1999.</li>
+	   
+           <li>Blogging Gödel: His ontological argument in the public
+	   eye (Fuhrmann), To appear.</li>
+	   <li> See also the list of papers available <a
+           href="https://github.com/FormalTheology/GoedelGod/tree/master/Literature">here</a>. </li>
+	 </ol>
+
+
+	   <h4>Computational Metaphysics</h4>
+	 <ol start="25">
+	   <li><a href="http://mally.stanford.edu/Papers/cade.pdf" class="external">
+	    Automating Leibniz's Theory of Concepts</a>
+	    (J. Alama, P.E. Oppenheimer, E.N. Zalta), In CADE 2015, Springer
+  	   LNCS, volume 9195, pp. 73-97, 2015.</li>
+	   <li><a href="http://mally.stanford.edu/Papers/computation.pdf" class="external">Steps Toward a Computational Metaphysics
+	   </a> (Fitelson, B., and E. Zalta), Journal of Philosophical Logic, 36/2 (April 2007): 227–247.
+	   </li>
+	   <li><a href="http://mally.stanford.edu/Papers/twenty-five.pdf" class="external">Twenty-Five Basic Theorems in Situation and World Theory
+	   </a> (Zalta, E.), Journal of Philosophical Logic, 22 (1993): 385-428.
+	   </li>
+	   <li><a href="http://mally.stanford.edu/Papers/leibniz.pdf" class="external">A (Leibnizian) Theory of Concepts
+	   </a> (Zalta, E.), Philosophiegeschichte und logische Analyse / Logical Analysis and History of Philosophy, 3 (2000): 137-183.
+	   </li>
+	   <li><a href="http://mally.stanford.edu/Papers/rtt.pdf" class="external">Relations Versus Functions at the Foundations of Logic: Type-Theoretic Considerations
+	   </a> (Oppenheimer, P., and E. Zalta), Journal of Logic and Computation, 21 (2011): 351–374.
+	   </li>
+	   <li><a href="https://mally.stanford.edu/theory.html">The Theory of Abstract Objects</a> (E.N. Zalta)</li>
+     <li><a href="http://www.amazon.de/Abstract-Objects-Introduction-Axiomatic-Metaphysics/dp/9027714746">Axiomatic
+      Metaphysics</a> (E.N. Zalta)</li>
+	   <li>Modal Logic as Metaphysics (T. Williamson), Oxford University Press, 2013</li>
+     <li>Mere Possibilities: Metaphysical Foundations of Modal Semantics (R.
+Stalnaker), Princeton University Press, 2011.</li>
+	   <li><a
+           href="http://page.mi.fu-berlin.de/cbenzmueller/papers/bibtexbrowser.local.php?search=Invited+Talk:+On+a&bib=chris.bib">On
+           a (Quite) Universal Theorem Proving Approach and Its
+           Application in Metaphysics</a> (Christoph Benzm&uumlller, In TABLEAUX 2015, Springer, LNCS, volume 9323, pp. 209-216,
+           2015. </li>
+	     <li> <a
+href="http://page.mi.fu-berlin.de/cbenzmueller/papers/bibtexbrowser.local.php?search=The+Inconsistency+in+Gödel’s+Ontological+Argument%3A+A+Success+Story+for+AI+in+Metaphysics&bib=chris.bib">The
+    Inconsistency in G&ouml;dels Ontological Argument: A Success
+    Story for AI in Metaphysics</a> (C. Benzmüller and
+	 B. Woltzenlogel Paleo), IJCAI 2016. </li>
+	       <li> <a
+href="http://page.mi.fu-berlin.de/cbenzmueller/papers/bibtexbrowser.local.php?search=Ontological+Proof+of+God's+Existence&bib=chris.bib">Automating G&ouml;del's Ontological Proof of God's Existence
+    with Higher-order Automated Theorem Provers</a> (C. Benzmüller and
+	 B. Woltzenlogel Paleo), ECAI, 2014.	</li>   
+           <li>Gödel’s God in Isabelle/HOL (C. Benzmüller and
+	 B. Woltzenlogel Paleo), Archive of Formal Proofs, 2013. </li>
+           <li><a href="http://github.com/FormalTheology/GoedelGod/blob/master/Papers/InProgress/NaturalDeduction/GodProof-ND.pdf?raw=true">A
+           variant of Gödel’s ontological proof in a natural deduction
+           calculus</a> (A. Siders and B. Woltzenlogel Paleo)</li>
+	   <li>Formalization, Mechanization and Automation of Gödel’s
+           Proof of God’s Existence (C. Benzmüller and B. Woltzenlogel
+           Paleo), ArXiv e-prints, 2013.</li>
+           <li><a href="hajek_short.pdf">Computer-assisted analysis of the Anderson-Hájek ontological controversy</a> (C. Benzmüller, L. Weber, and B. Woltzenlogel Paleo), Handbook of the 1st World Congress on Logic and Religion, Joao Pessoa, Brasil, 2015.</li>
+           <li>Interacting with Modal Logics in the Coq Proof Assistant (Benzmüller and B. Woltzenlogel Paleo), In Computer Science - Theory and Applications - 10th International Computer Science Symposium in Russia, CSR 2015. Springer, LNCS, volume 9139, pp. 398--411, 2015.</li>
+	   </ol>
+           
+            <h4>Logic Embeddings and Applications</h4>
+           <ol start="42">
+            <li> <a href="http://jlm.ipipan.waw.pl/index.php/JLM/article/view/113" class="external">Henkin Semantics for reasoning with natural language</a> (Michael Hahn, Frank Richter), Journal of Language Modelling, Volume 3(2), 2015.</li>
+            <li> <a href="http://page.mi.fu-berlin.de/cbenzmueller/papers/C40.pdf">Automating G&oumldel's Ontological Proof of God's Existence with Higher-order Automated Theorem Provers</a> (Christoph Benzm&uumlller, Bruno Woltzenlogel Paleo), In 21st European Conference on Artificial Intelligence (ECAI), 2014. </li>
+            <li><a
+           href="http://page.mi.fu-berlin.de/cbenzmueller/papers/bibtexbrowser.local.php?search=Higher-Order+Modal+Logics:+Automation+and+Applications&bib=chris.bib">Higher-order
+           Modal Logics: Automation and Applications </a> (C. Benzmüller, B. Woltzenlogel Paleo), In Reasoning Web 2015 (Adrian Paschke, Wolfgang Faber, eds.), Springer, LNCS, number 9203, pp. 32-74, 2015. </li>
+            <li><a href="http://page.mi.fu-berlin.de/cbenzmueller/papers/bibtexbrowser.local.php?search=Quantified+Multimodal+Logics+in+Simple+Type+Theory&bib=chris.bib">Quantified Multimodal Logics in Simple Type Theory</a> (C. Benzmüller, L. Paulson), Logica Universalis, 7(1):7-20, 2013.</li>
+            <li>Embedding and Automating Conditional Logics in
+           Classical Higher-Order Logic (C. Benzmüller, D. Gabbay,
+           V. Genovese, D. Rispoli), In Annals of Mathematics and Artificial Intelligence, volume 66, number 1-4, pp. 257-271, 2012.</li>
+           <li>HOL based First-order Modal Logic Provers, LPAR, 2013.</li>
+           <li>Implementing and Evaluating Provers for First-order Modal Logics, ECAI, 2012.</li>
+            <li>Sweet SIXTEEN: Automation via Embedding into Classical Higher-Order Logic (A. Steen, C. Benzmüller), In 7th International Conference Non-Classical Logic -- Theory and Applications, Toruń, Poland, 2015.</li>
+            
+            <li>Embedding of First-Order Nominal Logic into HOL (Alexander Steen, Max Wisniewski), In Jean-Yves Beziau, Safak Ural, Arthur Buchsbaum, Iskender Tasdelen, Vedat Kamer (Eds.), 5th World Congress and School on Universal Logic (UNILOG'15), Handbook of abstracts, Istanbul, Turkey, pp. 337--339, 2015.</li>
+            
+           </ol>
+           
+           <h4>Further topics</h4>
+           <ol start="51">
+            <li>First-Order Modal Logic (M. Fitting and R.L. Mendelsohn), volume 277 of Synthese Library. Kluwer, 1998.</li>
+            <li>Higher Order Modal Logic (R. Muskens), In P. Blackburn et al. (eds.), Handbook of Modal Logic, pages 621–653. Elsevier, Dordrecht, 2006. </li>
+            <li>Types, Tableaus, and Gödels God, (M. Fitting), Kluwer, 2002.</li>
+            <li>Interpolation for First Order S5 (M. Fitting), JSL, 67(2):621-634, 2002.</li>
+           <li><a href="http://rsta.royalsocietypublishing.org/content/363/1835">Notion of (Mathematical) Proof</a></li>
+           <li><a href="http://arxiv.org/abs/1501.02155">Formal Proof of Kepler Conjecture</a>, 2015</li> 
+           <li><a href="http://research.microsoft.com/en-us/um/people/lamport/pubs/proof.pdf">How to Write a 21st Century Proof</a>
+          (Leslie Lamport), 2011. </li> 
+           </ol>
+         <h3>Further resources</h3>
+           <ul>
+            <li><a href="https://
+github.com/FormalTheology/GoedelGod">B. Woltzenlogel Paleo and C. Benzmüller. Formal theology repository.</a></li>
+            <li><a href="http://page.mi.fu-berlin.de/cbenzmueller/papers/R57.pdf">Lecture proposal</a></li>
+           </ul>
+        </section>
+      </div>
+     </div>  
+     
+     <br>
+    </div>
+    <div class="container">
+      <div class="row">
+      <footer class="col-sm-12">
+        <div>C. Benzmüller, A. Steen, M. Wisniewski. Last edited 7/12/16.</div>
+      </footer>
+      </div>
+    </div>
+  </body>
+</html>

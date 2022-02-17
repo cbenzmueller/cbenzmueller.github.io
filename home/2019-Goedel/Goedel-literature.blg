@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2018/MacPorts 2018.47642_2)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: Goedel-literature.aux
+The style file: plainnat.bst
+Database file #1: Goedel-literature.bib
+Warning--empty publisher in crocco:hal-01459188
+You've used 27 entries,
+            2773 wiz_defined-function locations,
+            729 strings with 8268 characters,
+and the built_in function-call counts, 11871 in all, are:
+= -- 1072
+> -- 450
+< -- 47
++ -- 166
+- -- 131
+* -- 818
+:= -- 1736
+add.period$ -- 87
+call.type$ -- 27
+change.case$ -- 99
+chr.to.int$ -- 19
+cite$ -- 55
+duplicate$ -- 663
+empty$ -- 1116
+format.name$ -- 171
+if$ -- 2608
+int.to.chr$ -- 9
+int.to.str$ -- 1
+missing$ -- 33
+newline$ -- 147
+num.names$ -- 123
+pop$ -- 291
+preamble$ -- 1
+purify$ -- 88
+quote$ -- 0
+skip$ -- 489
+stack$ -- 0
+substring$ -- 549
+swap$ -- 155
+text.length$ -- 22
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 212
+warning$ -- 1
+while$ -- 125
+width$ -- 0
+write$ -- 360
+(There was 1 warning)
